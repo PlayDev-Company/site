@@ -2,12 +2,47 @@
 <html lang="pt-br">
   <head>
     <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/images/favicon-16x16.png"
+    />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="theme-color" content="#ffffff" />
+    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="A PlayDev oferece soluções inovadoras em desenvolvimento de software personalizado, consultoria em TI e automação de sistemas. Transforme sua ideia em um produto digital com a nossa expertise."
+    />
+    <meta
+      name="keywords"
+      content="desenvolvimento de software, consultoria em TI, automação de sistemas, soluções digitais, PlayDev, soluções para empresas"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="PlayDev - Soluções Inovadoras em Desenvolvimento de Software e Consultoria em TI"
+    />
+    <meta
+      property="og:description"
+      content="Transforme suas ideias em soluções digitais com a PlayDev. Oferecemos desenvolvimento de software sob demanda, consultoria em TI e automação de sistemas."
+    />
+    <meta
+      property="og:image"
+      content="https://www.playdev.com.br/images/logo.png"
+    />
+    <meta property="og:url" content="https://www.playdev.com.br" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PlayDev - Soluções em Desenvolvimento</title>
+    <title>
+      PlayDev - Soluções Inovadoras em Desenvolvimento de Software e Consultoria
+      em TI
+    </title>
+
     <style>
       /* Variáveis e Reset */
       :root {
@@ -583,7 +618,7 @@
             <p><strong>Horário:</strong> Segunda a Sexta, 8h às 18h</p>
           </div>
           <div class="contact-form">
-            <form id="contactForm">
+            <form id="contactForm" onsubmit="submitForm(event)">
               <div class="form-group">
                 <label for="name">Nome</label>
                 <input type="text" id="name" name="name" required />
@@ -632,64 +667,47 @@
     </footer>
 
     <script>
-      const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
-      const menu = document.getElementById("menu");
+      // Função para enviar a mensagem para o WhatsApp
+      function submitForm(e) {
+        e.preventDefault(); // Evita o envio padrão do formulário
 
-      mobileMenuBtn.addEventListener("click", () => {
-        menu.classList.toggle("active");
-      });
+        // Coleta os valores do formulário
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const subject = document.getElementById("subject").value;
+        const message = document.getElementById("message").value;
 
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          menu.classList.remove("active");
+        // Cria a URL para o WhatsApp com os parâmetros
+        const messageText = `Olá, meu nome é ${name}. Email: ${email}. Assunto: ${subject}. Mensagem: ${message}`;
+        const whatsappLink = `https://wa.me/5516991237526?text=${encodeURIComponent(
+          messageText
+        )}`;
 
-          const target = document.querySelector(this.getAttribute("href"));
-          window.scrollTo({
-            top: target.offsetTop - 70,
-            behavior: "smooth",
-          });
-        });
-      });
-
-      const casesContainer = document.getElementById("casesContainer");
-      const sliderDots = document.querySelectorAll(".slider-dot");
-      let currentSlide = 0;
-
-      casesContainer.style.transform = `translateX(0%)`;
-
-      sliderDots.forEach((dot, index) => {
-        dot.addEventListener("click", () => {
-          currentSlide = index;
-          updateSlider();
-        });
-      });
-
-      function updateSlider() {
-        casesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
-
-        sliderDots.forEach((dot, index) => {
-          if (index === currentSlide) {
-            dot.classList.add("active");
-          } else {
-            dot.classList.remove("active");
-          }
-        });
+        // Redireciona o usuário para o WhatsApp
+        window.location.href = whatsappLink;
       }
+    </script>
 
-      setInterval(() => {
-        currentSlide = (currentSlide + 1) % sliderDots.length;
-        updateSlider();
-      }, 10000);
-
-      const contactForm = document.getElementById("contactForm");
-
-      contactForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        alert("Mensagem enviada com sucesso! Entraremos em contato em breve.");
-        contactForm.reset();
-      });
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "name": "PlayDev",
+        "url": "https://www.playdev.com.br",
+        "logo": "https://www.playdev.com.br/images/logo.png",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+55 16 99123-7526",
+          "contactType": "Customer Service",
+          "areaServed": "BR",
+          "availableLanguage": "Portuguese"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/company/playdev-tecnologia-inovacao/",
+          "https://www.instagram.com/playdev.company/",
+          "https://www.facebook.com/people/Play-Dev-Company/61550107082386/"
+        ]
+      }
     </script>
   </body>
 </html>
