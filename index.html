@@ -1,931 +1,1129 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
   <head>
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/images/favicon-16x16.png"
-    />
-    <meta name="msapplication-TileColor" content="#ffffff" />
-    <meta name="theme-color" content="#ffffff" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <title>PlayDev | Software, ERP, E-commerce e Automação para PMEs</title>
     <meta
       name="description"
-      content="A PlayDev ajuda PMEs a crescer com tecnologia. Desenvolvemos softwares customizados, automatizamos processos e criamos soluções digitais que aumentam receita e reduzem custos."
+      content="A PlayDev leva tecnologia real para pequenas e médias empresas: sites, e-commerces, ERPs, sistemas sob medida e automação de processos. Agende um diagnóstico gratuito."
     />
     <meta
       name="keywords"
-      content="desenvolvimento de software, consultoria em TI, automação de sistemas, soluções digitais, PlayDev, soluções para empresas"
+      content="desenvolvimento de software para PMEs, criação de ERP, loja virtual, e-commerce, sistema sob medida, automação de processos, transformação digital, consultoria em TI, PlayDev"
     />
+    <meta name="author" content="PlayDev" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="theme-color" content="#0b0b12" />
+    <meta name="msapplication-TileColor" content="#0b0b12" />
+    <link rel="canonical" href="https://www.playdev.com.br/" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="PlayDev" />
     <meta
       property="og:title"
-      content="PlayDev - Soluções Inovadoras em Desenvolvimento de Software e Consultoria em TI"
+      content="PlayDev | Tecnologia que faz PMEs crescerem"
     />
     <meta
       property="og:description"
-      content="Transforme suas ideias em soluções digitais com a PlayDev. Oferecemos desenvolvimento de software sob demanda, consultoria em TI e automação de sistemas."
+      content="Sites, e-commerces, ERPs, sistemas sob medida e automação para pequenas e médias empresas. Diagnóstico gratuito e sem compromisso."
     />
-    <meta
-      property="og:image"
-      content="https://www.playdev.com.br/images/logo.png"
-    />
-    <meta property="og:url" content="https://www.playdev.com.br" />
+    <meta property="og:image" content="https://www.playdev.com.br/images/logo.png" />
+    <meta property="og:url" content="https://www.playdev.com.br/" />
+    <meta property="og:locale" content="pt_BR" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      PlayDev - Soluções Inovadoras em Desenvolvimento de Software e Consultoria
-      em TI
-    </title>
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="PlayDev | Tecnologia que faz PMEs crescerem" />
+    <meta
+      name="twitter:description"
+      content="Sites, e-commerces, ERPs, sistemas sob medida e automação para pequenas e médias empresas."
+    />
+    <meta name="twitter:image" content="https://www.playdev.com.br/images/logo.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
     <style>
       :root {
-        --bg: #0b1224;
-        --panel: #0f172a;
-        --panel-soft: #111a31;
-        --text: #e5e7eb;
-        --muted: #9ca3af;
-        --accent: #f97316;
-        --accent-strong: #fb923c;
-        --accent-alt: #22d3ee;
-        --stroke: rgba(255, 255, 255, 0.08);
-        --shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
-        --radius: 18px;
-        --transition: all 0.25s ease;
+        /* Cor da marca — troque apenas estas linhas pelo roxo exato da PlayDev */
+        --accent: #8b5cf6;
+        --accent-strong: #a78bfa;
+        --accent-deep: #7c3aed;
+
+        --bg: #0b0b12;
+        --bg-soft: #101018;
+        --surface: #14141e;
+        --surface-2: #191924;
+        --text: #ededf2;
+        --muted: #9d9daf;
+        --muted-dim: #74748a;
+        --border: rgba(255, 255, 255, 0.08);
+        --border-strong: rgba(255, 255, 255, 0.14);
+        --radius: 16px;
+        --radius-lg: 22px;
+        --max: 1140px;
+        --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
       }
 
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: "Sora", "Space Grotesk", "DM Sans", sans-serif;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
       }
 
       body {
-        background: radial-gradient(
-            circle at 20% 20%,
-            rgba(249, 115, 22, 0.08),
-            transparent 25%
-          ),
-          radial-gradient(
-            circle at 80% 10%,
-            rgba(59, 130, 246, 0.08),
-            transparent 22%
-          ),
-          linear-gradient(145deg, #070b16 0%, #0b1224 45%, #0a1020 100%);
+        font-family: "Inter", system-ui, -apple-system, sans-serif;
+        background: var(--bg);
         color: var(--text);
         line-height: 1.65;
-        scroll-behavior: smooth;
-        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
       }
 
-      a {
-        color: inherit;
-        text-decoration: none;
+      h1, h2, h3, h4 {
+        font-family: "Sora", "Inter", sans-serif;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+        font-weight: 700;
       }
 
-      section {
-        padding: 5.5rem 0;
-      }
+      a { color: inherit; text-decoration: none; }
+      img { max-width: 100%; display: block; }
+
+      ::selection { background: var(--accent-deep); color: #fff; }
 
       .container {
-        width: 88%;
-        max-width: 1180px;
+        width: 90%;
+        max-width: var(--max);
         margin: 0 auto;
       }
 
-      /* Header */
-      header {
-        position: fixed;
-        inset: 0 0 auto 0;
-        background: rgba(7, 11, 22, 0.75);
-        border-bottom: 1px solid var(--stroke);
-        backdrop-filter: blur(14px);
-        z-index: 1000;
-      }
-
-      .nav-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0.65rem 0;
-      }
-
-      .logo-img {
-        height: 48px;
-        width: auto;
-        display: block;
-      }
-
-      nav ul {
-        list-style: none;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-
-      nav ul li a {
-        padding: 0.55rem 0.9rem;
-        border-radius: 999px;
-        color: var(--muted);
-        font-weight: 600;
-        letter-spacing: 0.01em;
-        border: 1px solid transparent;
-        transition: var(--transition);
-      }
-
-      nav ul li a:hover,
-      nav ul li a:focus-visible {
-        color: var(--text);
-        border-color: var(--stroke);
-        background: rgba(255, 255, 255, 0.04);
-      }
-
-      .mobile-menu-btn {
-        display: none;
-        background: rgba(255, 255, 255, 0.06);
-        color: var(--text);
-        border: 1px solid var(--stroke);
-        width: 46px;
-        height: 46px;
-        border-radius: 14px;
-        font-size: 1.2rem;
-        cursor: pointer;
-        transition: var(--transition);
-        align-items: center;
-        justify-content: center;
-        padding: 0;
-      }
-
-      .mobile-menu-btn:hover {
-        background: rgba(255, 255, 255, 0.12);
-      }
-
-      /* Hero */
-      .hero {
-        padding: 8rem 0 5.5rem;
-        background: linear-gradient(
-            120deg,
-            rgba(255, 255, 255, 0.04),
-            rgba(255, 255, 255, 0)
-          ),
-          url("https://raw.githubusercontent.com/PlayDev-Company/site/main/images/background.jpg")
-            center/cover no-repeat;
-        position: relative;
-        overflow: hidden;
-        isolation: isolate;
-      }
-
-      .hero::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          140deg,
-          rgba(7, 11, 22, 0.9) 35%,
-          rgba(11, 18, 36, 0.85) 65%,
-          rgba(11, 18, 36, 0.7)
-        );
-        z-index: 0;
-      }
-
-      .hero-content {
-        position: relative;
-        z-index: 1;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 2rem;
-        align-items: center;
-      }
+      section { padding: 6rem 0; }
 
       .eyebrow {
         display: inline-flex;
         align-items: center;
-        gap: 0.45rem;
-        padding: 0.4rem 0.8rem;
-        background: rgba(249, 115, 22, 0.12);
-        color: var(--accent-strong);
-        border-radius: 999px;
+        gap: 0.5rem;
+        font-size: 0.8rem;
         font-weight: 600;
-        letter-spacing: 0.02em;
-        border: 1px solid rgba(249, 115, 22, 0.3);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent-strong);
+      }
+      .eyebrow::before {
+        content: "";
+        width: 20px;
+        height: 1px;
+        background: var(--accent);
       }
 
-      .hero h1 {
-        font-size: clamp(2.6rem, 4vw, 3.8rem);
-        margin: 0.9rem 0 0.4rem;
-        letter-spacing: -0.02em;
+      .section-head {
+        max-width: 640px;
+        margin-bottom: 3.5rem;
       }
-
-      .hero p {
+      .section-head h2 {
+        font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+        margin: 1rem 0 0.9rem;
+      }
+      .section-head p {
         color: var(--muted);
         font-size: 1.05rem;
-        max-width: 660px;
       }
 
-      .hero-ctas {
-        display: flex;
-        align-items: center;
-        gap: 0.85rem;
-        margin: 1.6rem 0 1.2rem;
-        flex-wrap: wrap;
-      }
-
+      /* Buttons */
       .btn {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        gap: 0.5rem;
-        padding: 0.92rem 1.35rem;
-        border-radius: 13px;
-        font-weight: 700;
+        gap: 0.55rem;
+        padding: 0.9rem 1.5rem;
+        border-radius: 12px;
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+        font-size: 0.98rem;
         border: 1px solid transparent;
-        color: #0b0f1a;
-        background: linear-gradient(
-          135deg,
-          var(--accent),
-          var(--accent-strong)
-        );
-        box-shadow: 0 16px 32px rgba(249, 115, 22, 0.3);
-        transition: var(--transition);
+        cursor: pointer;
+        transition: transform 0.2s var(--ease), background 0.2s var(--ease),
+          border-color 0.2s var(--ease);
+        white-space: nowrap;
       }
-
-      .btn:hover {
-        transform: translateY(-2px) scale(1.01);
-        box-shadow: 0 18px 38px rgba(249, 115, 22, 0.4);
-      }
-
-      .btn-ghost {
-        background: rgba(255, 255, 255, 0.05);
-        color: var(--text);
-        border: 1px solid var(--stroke);
-        box-shadow: none;
-      }
-
-      .btn-ghost:hover {
-        border-color: rgba(255, 255, 255, 0.18);
-        transform: translateY(-2px);
-      }
-
-      .hero-card {
-        background: rgba(255, 255, 255, 0.02);
-        border: 1px solid var(--stroke);
-        border-radius: var(--radius);
-        padding: 1.35rem;
-        backdrop-filter: blur(6px);
-        box-shadow: var(--shadow);
-      }
-
-      .stat-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-        gap: 0.9rem;
-        margin-top: 0.8rem;
-      }
-
-      .stat {
-        padding: 0.9rem 1rem;
-        background: var(--panel);
-        border-radius: 14px;
-        border: 1px solid var(--stroke);
-      }
-
-      .stat strong {
-        display: block;
-        font-size: 1.7rem;
-        margin-bottom: 0.3rem;
+      .btn-primary {
+        background: var(--accent);
         color: #fff;
       }
-
-      .stat span {
-        color: var(--muted);
-        font-weight: 600;
+      .btn-primary:hover {
+        background: var(--accent-deep);
+        transform: translateY(-2px);
       }
+      .btn-ghost {
+        background: transparent;
+        color: var(--text);
+        border-color: var(--border-strong);
+      }
+      .btn-ghost:hover {
+        border-color: var(--accent);
+        color: #fff;
+        transform: translateY(-2px);
+      }
+      .btn svg { width: 18px; height: 18px; }
 
-      /* Section headers */
-      .section-title {
+      /* Header */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background: rgba(11, 11, 18, 0.72);
+        backdrop-filter: saturate(160%) blur(12px);
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.3s, background 0.3s;
+      }
+      header.scrolled {
+        border-bottom-color: var(--border);
+      }
+      .nav {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 1rem;
-        margin-bottom: 2rem;
+        height: 74px;
       }
-
-      .section-title h2 {
-        font-size: clamp(2rem, 3vw, 2.6rem);
-        letter-spacing: -0.01em;
-      }
-
-      .section-title p {
-        color: var(--muted);
-        max-width: 540px;
-      }
-
-      .chip {
-        display: inline-flex;
+      .logo-img { height: 30px; width: auto; }
+      nav ul {
+        list-style: none;
+        display: flex;
         align-items: center;
         gap: 0.4rem;
-        padding: 0.45rem 0.85rem;
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.05);
-        color: var(--muted);
-        border: 1px solid var(--stroke);
-        font-weight: 600;
-        letter-spacing: 0.01em;
       }
+      nav ul li a {
+        padding: 0.5rem 0.85rem;
+        font-size: 0.94rem;
+        font-weight: 500;
+        color: var(--muted);
+        border-radius: 8px;
+        transition: color 0.2s;
+      }
+      nav ul li a:hover { color: var(--text); }
+      .nav-cta { display: flex; align-items: center; gap: 0.75rem; }
+      .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--text);
+        cursor: pointer;
+        width: 44px;
+        height: 44px;
+        align-items: center;
+        justify-content: center;
+      }
+      .menu-toggle svg { width: 26px; height: 26px; }
+
+      /* Hero */
+      .hero {
+        position: relative;
+        padding: 11rem 0 6rem;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: -20%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 900px;
+        height: 700px;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(139, 92, 246, 0.16),
+          transparent 62%
+        );
+        pointer-events: none;
+        z-index: 0;
+      }
+      .hero .container { position: relative; z-index: 1; }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 3.5rem;
+        align-items: center;
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.4rem 0.9rem;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: var(--surface);
+        font-size: 0.85rem;
+        color: var(--muted);
+        margin-bottom: 1.6rem;
+      }
+      .badge .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #22c55e;
+        box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.18);
+      }
+      .hero h1 {
+        font-size: clamp(2.4rem, 5vw, 3.7rem);
+        font-weight: 800;
+        margin-bottom: 1.3rem;
+      }
+      .hero h1 .hl { color: var(--accent-strong); }
+      .hero-sub {
+        font-size: 1.12rem;
+        color: var(--muted);
+        max-width: 540px;
+        margin-bottom: 2rem;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 0.9rem;
+        flex-wrap: wrap;
+        margin-bottom: 2.2rem;
+      }
+      .hero-trust {
+        display: flex;
+        align-items: center;
+        gap: 1.4rem;
+        flex-wrap: wrap;
+        color: var(--muted-dim);
+        font-size: 0.9rem;
+      }
+      .hero-trust span {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+      }
+      .hero-trust svg { width: 16px; height: 16px; color: var(--accent-strong); }
+
+      /* Hero card */
+      .hero-panel {
+        background: linear-gradient(180deg, var(--surface-2), var(--surface));
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1.75rem;
+      }
+      .hero-panel h3 {
+        font-size: 1.05rem;
+        margin-bottom: 1.25rem;
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+      }
+      .hero-panel h3 svg { width: 20px; height: 20px; color: var(--accent-strong); }
+      .stat-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1px;
+        background: var(--border);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        overflow: hidden;
+      }
+      .stat {
+        background: var(--surface);
+        padding: 1.15rem 1.2rem;
+      }
+      .stat strong {
+        display: block;
+        font-family: "Sora", sans-serif;
+        font-size: 1.7rem;
+        color: #fff;
+        line-height: 1;
+        margin-bottom: 0.4rem;
+      }
+      .stat span { font-size: 0.85rem; color: var(--muted); }
+
+      /* Logos / trust strip */
+      .trust-strip {
+        padding: 2.5rem 0;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+      .trust-strip .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+      .trust-strip p {
+        color: var(--muted-dim);
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+      .trust-logos {
+        display: flex;
+        align-items: center;
+        gap: 2.5rem;
+        flex-wrap: wrap;
+      }
+      .trust-logos img {
+        height: 34px;
+        width: auto;
+        opacity: 0.55;
+        filter: grayscale(1) brightness(1.8);
+        transition: opacity 0.25s;
+      }
+      .trust-logos img:hover { opacity: 0.9; }
 
       /* Services */
       .services-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-columns: repeat(3, 1fr);
         gap: 1.25rem;
       }
-
-      .service-card {
-        position: relative;
-        background: linear-gradient(
-          150deg,
-          rgba(255, 255, 255, 0.03),
-          rgba(255, 255, 255, 0.01)
-        );
-        border: 1px solid var(--stroke);
+      .service {
+        background: var(--surface);
+        border: 1px solid var(--border);
         border-radius: var(--radius);
-        padding: 1.45rem;
-        transition: var(--transition);
-        overflow: hidden;
+        padding: 1.75rem;
+        transition: border-color 0.25s, transform 0.25s, background 0.25s;
       }
-
-      .service-card::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          120deg,
-          rgba(249, 115, 22, 0.08),
-          rgba(59, 130, 246, 0.06)
-        );
-        opacity: 0;
-        transition: var(--transition);
+      .service:hover {
+        border-color: var(--border-strong);
+        background: var(--surface-2);
+        transform: translateY(-4px);
       }
-
-      .service-card:hover {
-        transform: translateY(-6px);
-        box-shadow: var(--shadow);
-      }
-
-      .service-card:hover::before {
-        opacity: 1;
-      }
-
-      .service-icon {
-        height: 48px;
-        width: 48px;
+      .service-ico {
+        width: 46px;
+        height: 46px;
+        border-radius: 12px;
         display: grid;
         place-items: center;
-        background: linear-gradient(
-          145deg,
-          rgba(249, 115, 22, 0.12),
-          rgba(34, 211, 238, 0.1)
-        );
+        background: rgba(139, 92, 246, 0.12);
+        border: 1px solid rgba(139, 92, 246, 0.22);
         color: var(--accent-strong);
-        border-radius: 14px;
-        border: 1px solid rgba(249, 115, 22, 0.25);
-        font-size: 1.35rem;
-        margin-bottom: 0.9rem;
+        margin-bottom: 1.15rem;
+      }
+      .service-ico svg { width: 23px; height: 23px; }
+      .service h3 { font-size: 1.18rem; margin-bottom: 0.55rem; }
+      .service p { color: var(--muted); font-size: 0.96rem; }
+
+      /* Process */
+      .process { background: var(--bg-soft); }
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.25rem;
+        counter-reset: step;
+      }
+      .step {
         position: relative;
-        z-index: 1;
+        padding-top: 1.5rem;
+        border-top: 2px solid var(--border);
       }
-
-      .service-content {
-        position: relative;
-        z-index: 1;
+      .step::before {
+        counter-increment: step;
+        content: "0" counter(step);
+        font-family: "Sora", sans-serif;
+        font-weight: 700;
+        font-size: 0.95rem;
+        color: var(--accent-strong);
+        display: block;
+        margin-bottom: 0.75rem;
       }
-
-      .service-content h3 {
-        margin-bottom: 0.6rem;
-      }
-
-      .service-content p {
-        color: var(--muted);
-        font-size: 0.98rem;
-      }
+      .step h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+      .step p { color: var(--muted); font-size: 0.94rem; }
 
       /* Cases */
       .cases-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 1.1rem;
-      }
-
-      .case-card {
-        background: var(--panel);
-        border: 1px solid var(--stroke);
-        border-radius: var(--radius);
-        padding: 1.35rem;
-        display: grid;
-        gap: 1rem;
-        align-items: center;
-        transition: var(--transition);
-      }
-
-      .case-card:hover {
-        transform: translateY(-4px);
-        box-shadow: var(--shadow);
-      }
-
-      .case-image {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 0.8rem;
-      }
-
-      .logo-dyzon {
-        height: 64px;
-        width: auto;
-        display: block;
-        filter: drop-shadow(0 12px 25px rgba(0, 0, 0, 0.25));
-      }
-
-      .case-content .client {
-        color: var(--accent-strong);
-        font-weight: 700;
-        margin-bottom: 0.35rem;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.35rem;
-      }
-
-      .case-content h3 {
-        margin-bottom: 0.4rem;
-      }
-
-      .case-content p {
-        color: var(--muted);
-      }
-
-      /* Contact */
-      .contact {
-        background: linear-gradient(
-          135deg,
-          rgba(17, 24, 39, 0.95),
-          rgba(11, 17, 31, 0.98)
-        );
-        border-top: 1px solid var(--stroke);
-      }
-
-      .contact-wrapper {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-template-columns: 1fr 1fr;
         gap: 1.5rem;
       }
-
-      .contact-info,
-      .contact-form {
-        background: rgba(255, 255, 255, 0.02);
-        border: 1px solid var(--stroke);
-        border-radius: var(--radius);
-        padding: 1.4rem;
+      .case {
+        background: linear-gradient(180deg, var(--surface-2), var(--surface));
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 2rem;
+        transition: border-color 0.25s;
       }
-
-      .contact-info h3 {
-        margin-bottom: 1rem;
+      .case:hover { border-color: var(--border-strong); }
+      .case-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1.4rem;
+        padding-bottom: 1.4rem;
+        border-bottom: 1px solid var(--border);
       }
-
-      .contact-info p {
-        margin-bottom: 0.7rem;
-        color: var(--muted);
+      .case-top img { height: 40px; width: auto; }
+      .case-metric {
+        text-align: right;
       }
-
-      .contact-info strong {
-        color: var(--text);
-      }
-
-      .contact-form .form-group {
-        margin-bottom: 1.1rem;
-      }
-
-      .contact-form label {
+      .case-metric strong {
+        font-family: "Sora", sans-serif;
+        font-size: 1.5rem;
+        color: var(--accent-strong);
         display: block;
-        margin-bottom: 0.35rem;
+        line-height: 1;
+      }
+      .case-metric span { font-size: 0.78rem; color: var(--muted-dim); }
+      .case h3 { font-size: 1.22rem; margin-bottom: 0.7rem; }
+      .case p { color: var(--muted); font-size: 0.97rem; }
+      .case .tag {
+        display: inline-block;
+        margin-top: 1.2rem;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--muted-dim);
+        border: 1px solid var(--border);
+        padding: 0.3rem 0.75rem;
+        border-radius: 999px;
+      }
+
+      /* CTA band */
+      .cta-band {
+        position: relative;
+        overflow: hidden;
+        background:
+          radial-gradient(
+            ellipse at 15% 20%,
+            rgba(139, 92, 246, 0.22),
+            transparent 55%
+          ),
+          linear-gradient(150deg, #1a1330, #120f22);
+        border: 1px solid rgba(139, 92, 246, 0.25);
+        border-radius: var(--radius-lg);
+        padding: 3.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+      .cta-band h2 {
+        font-size: clamp(1.7rem, 3vw, 2.3rem);
+        margin-bottom: 0.7rem;
+      }
+      .cta-band p { color: var(--muted); max-width: 480px; }
+      .cta-band-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+
+      /* Contact */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 2rem;
+      }
+      .contact-info h3 { font-size: 1.3rem; margin-bottom: 1.3rem; }
+      .contact-list { list-style: none; display: grid; gap: 1.1rem; }
+      .contact-list li {
+        display: flex;
+        gap: 0.9rem;
+        align-items: flex-start;
+      }
+      .contact-list .ci {
+        width: 42px;
+        height: 42px;
+        flex-shrink: 0;
+        border-radius: 11px;
+        display: grid;
+        place-items: center;
+        background: var(--surface-2);
+        border: 1px solid var(--border);
+        color: var(--accent-strong);
+      }
+      .contact-list .ci svg { width: 19px; height: 19px; }
+      .contact-list .cd span {
+        display: block;
+        font-size: 0.8rem;
+        color: var(--muted-dim);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .contact-list .cd strong { font-weight: 600; color: var(--text); font-size: 1rem; }
+      .contact-list .cd a:hover { color: var(--accent-strong); }
+
+      .contact-form {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 2rem;
+      }
+      .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .field { margin-bottom: 1.15rem; }
+      .field label {
+        display: block;
+        font-size: 0.85rem;
+        font-weight: 500;
         color: var(--muted);
+        margin-bottom: 0.45rem;
       }
-
-      .contact-form input,
-      .contact-form textarea {
+      .field input,
+      .field textarea {
         width: 100%;
-        padding: 0.9rem 0.95rem;
-        border-radius: 12px;
-        border: 1px solid var(--stroke);
-        background: rgba(255, 255, 255, 0.02);
+        padding: 0.85rem 1rem;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 11px;
         color: var(--text);
-        transition: var(--transition);
+        font-family: "Inter", sans-serif;
+        font-size: 0.96rem;
+        transition: border-color 0.2s;
       }
-
-      .contact-form input:focus,
-      .contact-form textarea:focus {
-        outline: 1px solid var(--accent);
+      .field input::placeholder,
+      .field textarea::placeholder { color: var(--muted-dim); }
+      .field input:focus,
+      .field textarea:focus {
+        outline: none;
         border-color: var(--accent);
       }
+      .field textarea { min-height: 120px; resize: vertical; }
+      .contact-form .btn-primary { width: 100%; }
+      .form-note {
+        text-align: center;
+        font-size: 0.82rem;
+        color: var(--muted-dim);
+        margin-top: 0.9rem;
+      }
 
-      .contact-form textarea {
-        height: 140px;
-        resize: vertical;
+      /* FAQ */
+      .faq { background: var(--bg-soft); }
+      .faq-list {
+        max-width: 800px;
+        margin: 0 auto;
+        display: grid;
+        gap: 0.75rem;
+      }
+      .faq-item {
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: var(--surface);
+        overflow: hidden;
+        transition: border-color 0.25s;
+      }
+      .faq-item[open] { border-color: var(--border-strong); }
+      .faq-item summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 1.3rem 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        font-family: "Sora", sans-serif;
+        font-weight: 600;
+        font-size: 1.05rem;
+        color: var(--text);
+      }
+      .faq-item summary::-webkit-details-marker { display: none; }
+      .faq-item summary .chev {
+        flex-shrink: 0;
+        width: 22px; height: 22px;
+        color: var(--accent-strong);
+        transition: transform 0.25s var(--ease);
+      }
+      .faq-item[open] summary .chev { transform: rotate(180deg); }
+      .faq-item .faq-body {
+        padding: 0 1.5rem 1.35rem;
+        color: var(--muted);
+        font-size: 0.98rem;
       }
 
       /* Footer */
       footer {
-        background: #090f1d;
+        border-top: 1px solid var(--border);
+        padding: 3.5rem 0 2rem;
+      }
+      .footer-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 2rem;
+        flex-wrap: wrap;
+        margin-bottom: 2.5rem;
+      }
+      .footer-brand { max-width: 320px; }
+      .footer-brand img { height: 28px; margin-bottom: 1rem; }
+      .footer-brand p { color: var(--muted); font-size: 0.94rem; }
+      .footer-cols { display: flex; gap: 4rem; flex-wrap: wrap; }
+      .footer-col h4 {
+        font-family: "Inter", sans-serif;
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--muted-dim);
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+      .footer-col a {
+        display: block;
         color: var(--muted);
-        text-align: center;
-        padding: 2rem 0;
-        border-top: 1px solid var(--stroke);
+        font-size: 0.94rem;
+        margin-bottom: 0.6rem;
+        transition: color 0.2s;
+      }
+      .footer-col a:hover { color: var(--text); }
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border);
+        color: var(--muted-dim);
+        font-size: 0.88rem;
+      }
+      .social { display: flex; gap: 0.6rem; }
+      .social a {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        display: grid;
+        place-items: center;
+        border: 1px solid var(--border);
+        color: var(--muted);
+        transition: color 0.2s, border-color 0.2s;
+      }
+      .social a:hover { color: var(--text); border-color: var(--accent); }
+      .social svg { width: 18px; height: 18px; }
+
+      /* Floating WhatsApp */
+      .wa-float {
+        position: fixed;
+        right: 22px;
+        bottom: 22px;
+        z-index: 90;
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        background: #25d366;
+        display: grid;
+        place-items: center;
+        box-shadow: 0 10px 30px rgba(37, 211, 102, 0.35);
+        transition: transform 0.2s var(--ease);
+      }
+      .wa-float:hover { transform: scale(1.08); }
+      .wa-float svg { width: 30px; height: 30px; color: #fff; }
+      .wa-float::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        border: 2px solid rgba(37, 211, 102, 0.5);
+        animation: wa-pulse 2.2s ease-out infinite;
+      }
+      @keyframes wa-pulse {
+        0% { transform: scale(1); opacity: 0.7; }
+        100% { transform: scale(1.6); opacity: 0; }
       }
 
-      .social-icons {
-        margin: 1rem 0;
+      /* Reveal on scroll */
+      .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
       }
-
-      .social-icons a {
-        color: var(--text);
-        margin: 0 10px;
-        font-size: 1.4rem;
-        transition: var(--transition);
-      }
-
-      .social-icons a:hover {
-        color: var(--accent-strong);
-        transform: translateY(-3px);
-      }
+      .reveal.visible { opacity: 1; transform: none; }
 
       /* Responsive */
-      @media (max-width: 960px) {
+      @media (max-width: 940px) {
+        .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+        .services-grid { grid-template-columns: repeat(2, 1fr); }
+        .steps { grid-template-columns: repeat(2, 1fr); }
+        .contact-grid { grid-template-columns: 1fr; }
+      }
+      @media (max-width: 760px) {
+        section { padding: 4.5rem 0; }
         nav ul {
           position: fixed;
-          inset: 72px 0 auto 0;
-          flex-direction: column;
-          background: rgba(7, 11, 22, 0.96);
-          border-bottom: 1px solid var(--stroke);
-          padding: 1.2rem 1.6rem 1.6rem;
-          gap: 0.6rem;
-          transform: translateY(-140%);
-          transition: var(--transition);
-        }
-
-        nav ul.active {
-          transform: translateY(0);
-        }
-
-        .mobile-menu-btn {
-          display: inline-flex;
-        }
-
-        .hero {
-          padding-top: 7rem;
-        }
-      }
-
-      @media (max-width: 640px) {
-        .hero h1 {
-          font-size: 2.2rem;
-        }
-
-        .hero-ctas {
+          top: 74px;
+          left: 0;
+          right: 0;
           flex-direction: column;
           align-items: stretch;
+          background: rgba(11, 11, 18, 0.98);
+          backdrop-filter: blur(12px);
+          border-bottom: 1px solid var(--border);
+          padding: 1rem 5%;
+          gap: 0.2rem;
+          transform: translateY(-120%);
+          transition: transform 0.3s var(--ease);
+          visibility: hidden;
         }
-
-        nav ul {
-          inset: 64px 0 auto 0;
-        }
+        nav ul.open { transform: translateY(0); visibility: visible; }
+        nav ul li a { display: block; padding: 0.75rem 0.85rem; }
+        .menu-toggle { display: flex; }
+        .nav-cta .btn-ghost { display: none; }
+        .cta-band { padding: 2.25rem; }
+        .cta-band-actions { width: 100%; }
+        .cta-band-actions .btn { flex: 1; }
+      }
+      @media (max-width: 560px) {
+        .services-grid,
+        .steps,
+        .cases-grid,
+        .form-row { grid-template-columns: 1fr; }
+        .hero-actions .btn { flex: 1; }
+        .trust-strip .container { justify-content: center; text-align: center; }
       }
     </style>
   </head>
   <body>
-    <!-- Header & Navigation -->
-    <header>
-      <div class="container nav-container">
-        <div class="logo">
-          <img src="/images/logo.png" alt="PlayDev Logo" class="logo-img" />
-        </div>
-        <button class="mobile-menu-btn" aria-label="Abrir menu">
-          <span style="font-size: 1.2rem">≡</span>
-        </button>
+    <!-- Header -->
+    <header id="header">
+      <div class="container nav">
+        <a href="#home" aria-label="PlayDev — página inicial">
+          <img src="/images/logo.png" alt="PlayDev" class="logo-img" />
+        </a>
         <nav>
           <ul id="menu">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">Serviços</a></li>
-            <li><a href="#cases">Casos de Sucesso</a></li>
-            <li><a href="#contact">Contato</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#processo">Como funciona</a></li>
+            <li><a href="#cases">Casos de sucesso</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="careers.html">Carreiras</a></li>
+            <li><a href="#contato">Contato</a></li>
           </ul>
         </nav>
+        <div class="nav-cta">
+          <a href="#contato" class="btn btn-ghost">Falar com um especialista</a>
+          <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
       </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section id="home" class="hero">
-      <div class="container hero-content">
-        <div class="hero-copy">
-          <span class="eyebrow">Especialista em Tecnologia para PMEs</span>
-          <h1>Software e automação que fazem sua empresa crescer.</h1>
-          <p>
-            Criamos produtos digitais, automatizamos processos e integramos
-            sistemas. Tudo isso com um time dedicado, linguagem clara e
-            resultados que você vê.
-          </p>
-          <div class="hero-ctas">
-            <a href="#contact" class="btn">Agendar uma conversa</a>
-            <a href="#services" class="btn btn-ghost">Ver como trabalhamos</a>
-            <a
-              href="#cta"
-              class="btn btn-ghost"
-              style="border-color: rgba(255, 255, 255, 0.14)"
-            >
-              Ver agenda desta semana
-            </a>
-          </div>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 12px">
-          <div class="hero-card">
-            <div class="stat-grid">
-              <div class="stat">
-                <strong>+50</strong>
-                <span>Empresas que confiaram</span>
-              </div>
-              <div class="stat">
-                <strong>98%</strong>
-                <span>Satisfação e fidelização</span>
-              </div>
-              <div class="stat">
-                <strong>4-8 sem</strong>
-                <span>Software pronto para usar</span>
-              </div>
-              <div class="stat">
-                <strong>24/7</strong>
-                <span>Suporte e evolução</span>
-              </div>
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <span class="badge"><span class="dot"></span> Aceitando novos projetos em 2026</span>
+            <h1>Tecnologia que faz sua <span class="hl">empresa crescer</span> de verdade.</h1>
+            <p class="hero-sub">
+              A PlayDev ajuda pequenas e médias empresas a entrar no mundo
+              digital: sites, e-commerces, ERPs, sistemas sob medida e automação
+              de processos. Sem enrolação, com resultado que você enxerga.
+            </p>
+            <div class="hero-actions">
+              <a href="#contato" class="btn btn-primary">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.94 14.46L2 22l5.7-1.5A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.13l-.29-.17-3.38.89.9-3.3-.19-.3A8 8 0 1112 20z"/></svg>
+                Diagnóstico gratuito
+              </a>
+              <a href="#servicos" class="btn btn-ghost">Ver soluções</a>
+            </div>
+            <div class="hero-trust">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> +50 empresas atendidas</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Time dedicado</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Suporte contínuo</span>
             </div>
           </div>
-          <div class="hero-card">
-            <div class="chip">Como a PlayDev funciona</div>
-            <h3 style="margin: 0.6rem 0 0.4rem">Simplicidade e Eficiência.</h3>
-            <p style="color: var(--muted); margin-bottom: 1rem">
-              Conversamos sobre seu negócio, mapeamos o problema, desenvolvemos
-              a solução e colocamos em operação. Sem burocracias, sem surpresas.
-            </p>
-            <div class="hero-ctas" style="margin: 0">
-              <span class="chip">Diagnóstico</span>
-              <span class="chip">Time dedicado</span>
-              <span class="chip">Entrega rápida</span>
-              <span class="chip">Suporte contínuo</span>
+          <div class="hero-panel">
+            <h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 9l-5 5-3-3-4 4"/></svg>
+              Resultados reais
+            </h3>
+            <div class="stat-row">
+              <div class="stat"><strong>+50</strong><span>Empresas que confiaram na PlayDev</span></div>
+              <div class="stat"><strong>98%</strong><span>Satisfação e fidelização</span></div>
+              <div class="stat"><strong>4–8 sem</strong><span>Do briefing ao sistema no ar</span></div>
+              <div class="stat"><strong>70%</strong><span>Menos tempo em tarefas manuais</span></div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services">
+    <!-- Trust strip -->
+    <div class="trust-strip">
       <div class="container">
-        <div class="section-title">
-          <div>
-            <span class="chip">Como podemos ajudar</span>
-            <h2>Soluções para sua empresa</h2>
-            <p>
-              Cada PME tem desafios únicos. Oferecemos serviços que se adaptam
-              ao seu negócio e geram resultados rápidos.
-            </p>
-          </div>
+        <p>Empresas que já cresceram com a gente</p>
+        <div class="trust-logos">
+          <img src="/images/dyzon-logo.svg" alt="Dyzon Envios" loading="lazy" />
+          <img src="/images/gespat-logo.svg" alt="Gespat" loading="lazy" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Services -->
+    <section id="servicos">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">O que fazemos</span>
+          <h2>Soluções digitais sob medida para a sua PME</h2>
+          <p>
+            Cada negócio tem seus próprios desafios. Nós entendemos o seu e
+            entregamos a tecnologia certa — do site institucional ao sistema
+            complexo que roda a operação inteira.
+          </p>
         </div>
         <div class="services-grid">
-          <div class="service-card">
-            <div class="service-icon"><i class="fa-solid fa-code"></i></div>
-            <div class="service-content">
-              <h3>Sistemas sob medida</h3>
-              <p>
-                Desenvolvemos softwares customizados (web, mobile ou desktop)
-                que resolvem seus processos específicos e crescem com você.
-              </p>
-            </div>
+          <article class="service reveal">
+            <div class="service-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+            <h3>Sites e landing pages</h3>
+            <p>Sites rápidos, bonitos e otimizados para SEO, que transmitem credibilidade e transformam visitantes em clientes.</p>
+          </article>
+          <article class="service reveal">
+            <div class="service-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39A2 2 0 009.64 16h9.72a2 2 0 002-1.61L23 6H6"/></svg></div>
+            <h3>E-commerce e lojas virtuais</h3>
+            <p>Coloque sua empresa para vender online 24h por dia, com uma loja segura, integrada a pagamentos e fácil de gerenciar.</p>
+          </article>
+          <article class="service reveal">
+            <div class="service-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v6H4zM4 14h16v6H4z"/><path d="M8 7h.01M8 17h.01"/></svg></div>
+            <h3>ERPs e sistemas de gestão</h3>
+            <p>Centralize vendas, estoque, financeiro e clientes num sistema feito para a sua realidade — não numa planilha bagunçada.</p>
+          </article>
+          <article class="service reveal">
+            <div class="service-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+            <h3>Sistemas sob medida</h3>
+            <p>Software complexo (web, mobile ou desktop) desenvolvido do zero para resolver exatamente o que o seu negócio precisa.</p>
+          </article>
+          <article class="service reveal">
+            <div class="service-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4M8 16h.01M16 16h.01"/></svg></div>
+            <h3>Automação de processos</h3>
+            <p>Conectamos seus sistemas e automatizamos tarefas repetitivas. Menos erros, menos retrabalho, mais tempo para o que importa.</p>
+          </article>
+          <article class="service reveal">
+            <div class="service-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg></div>
+            <h3>Nuvem e infraestrutura</h3>
+            <p>Hospedagem segura, backup automático e custos previsíveis. Seu software no ar 24/7, escalando junto com o seu crescimento.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section id="processo" class="process">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Como funciona</span>
+          <h2>Simples do começo ao fim</h2>
+          <p>
+            Sem burocracia e sem surpresas. Você acompanha cada etapa e fala
+            direto com quem está construindo a solução.
+          </p>
+        </div>
+        <div class="steps">
+          <div class="step reveal">
+            <h3>Diagnóstico</h3>
+            <p>Conversamos sobre o seu negócio e entendemos o problema real que precisa ser resolvido.</p>
           </div>
-          <div class="service-card">
-            <div class="service-icon">
-              <i class="fa-solid fa-diagram-project"></i>
-            </div>
-            <div class="service-content">
-              <h3>Planejamento estratégico</h3>
-              <p>
-                Mapeamos seus desafios, definimos prioridades e criamos um plano
-                claro de implementação. Tudo antes de gastar um real.
-              </p>
-            </div>
+          <div class="step reveal">
+            <h3>Planejamento</h3>
+            <p>Definimos escopo, prazos e prioridades num plano claro — antes de você gastar um real.</p>
           </div>
-          <div class="service-card">
-            <div class="service-icon"><i class="fa-solid fa-robot"></i></div>
-            <div class="service-content">
-              <h3>Automação de processos</h3>
-              <p>
-                Conectamos seus sistemas (ERP, CRM, banco de dados) e
-                automatizamos tarefas repetitivas. Resultado: menos erros, mais
-                tempo livre para estratégia.
-              </p>
-            </div>
+          <div class="step reveal">
+            <h3>Desenvolvimento</h3>
+            <p>Nosso time constrói a solução com entregas frequentes, para você ver o progresso de perto.</p>
           </div>
-          <div class="service-card">
-            <div class="service-icon">
-              <i class="fa-solid fa-shield-heart"></i>
-            </div>
-            <div class="service-content">
-              <h3>Segurança e confiabilidade</h3>
-              <p>
-                Mantemos seus sistemas funcionando 24/7, protegidos contra
-                ameaças e sempre disponíveis. Você dorme sossegado.
-              </p>
-            </div>
-          </div>
-          <div class="service-card">
-            <div class="service-icon">
-              <i class="fa-solid fa-cloud-arrow-up"></i>
-            </div>
-            <div class="service-content">
-              <h3>Infraestrutura na nuvem</h3>
-              <p>
-                Hospedamos seu software na nuvem com segurança, backup
-                automático e custos previsíveis. Escalável conforme seu
-                crescimento.
-              </p>
-            </div>
-          </div>
-          <div class="service-card">
-            <div class="service-icon"><i class="fa-solid fa-palette"></i></div>
-            <div class="service-content">
-              <h3>Design e experiência</h3>
-              <p>
-                Criamos interfaces bonitas, fáceis de usar e que vendem. Seu
-                software fica profissional e seus clientes adoram.
-              </p>
-            </div>
+          <div class="step reveal">
+            <h3>Operação e suporte</h3>
+            <p>Colocamos no ar, treinamos seu time e continuamos evoluindo o sistema junto com você.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Success Cases Section -->
+    <!-- Cases -->
     <section id="cases">
       <div class="container">
-        <div class="section-title">
-          <div>
-            <span class="chip">Histórias reais</span>
-            <h2>Empresas que cresceram com a gente</h2>
-            <p>
-              Veja como outras PMEs conseguiram automatizar, reduzir custos e
-              ganhar tempo com nossa ajuda.
-            </p>
-          </div>
-          <a class="btn btn-ghost" href="#contact" style="gap: 0.35rem">
-            <i class="fa-solid fa-calendar-check"></i>
-            Agendar conversa gratuita
-          </a>
+        <div class="section-head">
+          <span class="eyebrow">Casos de sucesso</span>
+          <h2>Histórias reais de quem cresceu com a PlayDev</h2>
+          <p>Resultados concretos de empresas que decidiram investir em tecnologia de verdade.</p>
         </div>
         <div class="cases-grid">
-          <div class="case-card">
-            <div class="case-image">
-              <img
-                src="/images/dyzon-logo.svg"
-                alt="Dyzon Logo"
-                class="logo-dyzon"
-              />
+          <article class="case reveal">
+            <div class="case-top">
+              <img src="/images/dyzon-logo.svg" alt="Dyzon Envios" loading="lazy" />
+              <div class="case-metric"><strong>-70%</strong><span>tempo de operação</span></div>
             </div>
-            <div class="case-content">
-              <span class="client"
-                ><i class="fa-solid fa-arrow-trend-up"></i> Dyzon Envios</span
-              >
-              <h3>Economizou 70% do tempo em operação</h3>
-              <p>
-                Uma empresa de fretes precisava processar cotações manualmente.
-                Criamos um sistema que faz tudo sozinho: pede preço, integra com
-                transportadoras, emite recibos e gera etiquetas. Resultado:
-                ganhou velocidade e reduziu erros.
-              </p>
-            </div>
-          </div>
-          <div class="case-card">
-            <div class="case-image">
-              <img
-                src="/images/gespat-logo.png"
-                alt="Gespat Logo"
-                class="logo-dyzon"
-              />
-            </div>
-            <div class="case-content">
-              <span class="client"
-                ><i class="fa-solid fa-shield-halved"></i> Gespat</span
-              >
-              <h3>Controle total sobre todo patrimônio</h3>
-              <p>
-                Uma instituição pública lutava para controlar seus bens.
-                Desenvolvemos um app móvel com QR Code e um painel que mostra
-                exatamente onde está cada item. Adeus planilhas, olá
-                rastreabilidade total.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="cta" style="padding: 3.5rem 0">
-      <div class="container">
-        <div
-          style="
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1rem;
-            background: linear-gradient(
-              120deg,
-              rgba(249, 115, 22, 0.12),
-              rgba(34, 211, 238, 0.1)
-            );
-            border: 1px solid var(--stroke);
-            border-radius: var(--radius);
-            padding: 1.4rem 1.6rem;
-            align-items: center;
-          "
-        >
-          <div>
-            <span class="chip">Próximo passo</span>
-            <h3 style="margin: 0.5rem 0 0.3rem">
-              Agende uma conversa gratuita
-            </h3>
-            <p style="color: var(--muted); max-width: 560px">
-              Em 30 minutos entendemos seu desafio e te mostramos como a PlayDev
-              pode ajudar. Sem compromisso, sem custo, sem papo técnico.
-            </p>
-          </div>
-          <div style="display: flex; gap: 0.6rem; flex-wrap: wrap">
-            <a href="#contact" class="btn">Agendar agora</a>
-            <a href="#services" class="btn btn-ghost">Ver soluções</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-      <div class="container">
-        <div class="section-title">
-          <div>
-            <span class="chip">Vamos conversar?</span>
-            <h2>Fale com a gente, sem compromisso</h2>
+            <h3>Cotação de fretes 100% automatizada</h3>
             <p>
-              Conte qual é o seu maior desafio de tecnologia. A gente vê se
-              consegue ajudar. Respondemos em até 24h com ideias concretas.
+              A Dyzon processava cotações manualmente. Criamos um sistema que faz
+              tudo sozinho: consulta preços, integra com transportadoras, emite
+              recibos e gera etiquetas — com muito mais velocidade e sem erros.
+            </p>
+            <span class="tag">Automação · Integrações</span>
+          </article>
+          <article class="case reveal">
+            <div class="case-top">
+              <img src="/images/gespat-logo.svg" alt="Gespat" loading="lazy" />
+              <div class="case-metric"><strong>100%</strong><span>do patrimônio rastreável</span></div>
+            </div>
+            <h3>Controle total do patrimônio com QR Code</h3>
+            <p>
+              Uma instituição pública lutava para controlar seus bens.
+              Desenvolvemos um app mobile com QR Code e um painel que mostra
+              exatamente onde está cada item. Adeus planilhas, olá rastreabilidade.
+            </p>
+            <span class="tag">App mobile · Sistema de gestão</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA band -->
+    <section>
+      <div class="container">
+        <div class="cta-band reveal">
+          <div>
+            <span class="eyebrow">Próximo passo</span>
+            <h2>Vamos descobrir como a tecnologia pode te ajudar?</h2>
+            <p>
+              Em uma conversa de 30 minutos entendemos o seu desafio e te
+              mostramos caminhos concretos. Sem custo, sem compromisso e sem
+              papo técnico complicado.
             </p>
           </div>
-          <div class="chip" style="gap: 0.25rem; color: var(--accent-strong)">
-            <i class="fa-solid fa-lightning-bolt"></i> Resposta rápida
+          <div class="cta-band-actions">
+            <a href="https://wa.me/5516991237526?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20diagn%C3%B3stico%20gratuito%20com%20a%20PlayDev." target="_blank" rel="noopener" class="btn btn-primary">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.94 14.46L2 22l5.7-1.5A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.13l-.29-.17-3.38.89.9-3.3-.19-.3A8 8 0 1112 20z"/></svg>
+              Falar no WhatsApp
+            </a>
+            <a href="#contato" class="btn btn-ghost">Enviar mensagem</a>
           </div>
         </div>
-        <div class="contact-wrapper">
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq">
+      <div class="container">
+        <div class="section-head" style="margin-left:auto;margin-right:auto;text-align:center">
+          <span class="eyebrow" style="justify-content:center">Perguntas frequentes</span>
+          <h2>Dúvidas comuns de quem está começando</h2>
+          <p style="margin:0 auto">Se a sua pergunta não estiver aqui, é só chamar a gente no WhatsApp.</p>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>
+              Quanto tempo leva para desenvolver um sistema?
+              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-body">
+              Depende do escopo, mas a maioria dos nossos projetos vai do briefing
+              ao sistema no ar em 4 a 8 semanas. Projetos maiores são divididos em
+              entregas menores, para você começar a ver valor rápido.
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary>
+              Quanto custa um projeto com a PlayDev?
+              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-body">
+              Cada projeto é único, então o valor depende do que você precisa. No
+              diagnóstico gratuito entendemos o seu desafio e apresentamos uma
+              proposta clara, com escopo e preço definidos antes de você investir
+              qualquer valor.
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary>
+              Que tipo de empresa vocês atendem?
+              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-body">
+              Somos especialistas em pequenas e médias empresas (PMEs) de diversos
+              segmentos: comércio, serviços, logística, indústria e mais. Se o seu
+              negócio quer entrar no digital ou melhorar processos com tecnologia,
+              a gente ajuda.
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary>
+              Vocês atendem empresas de outras cidades?
+              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-body">
+              Sim! Atendemos empresas de todo o Brasil de forma remota, com reuniões
+              online e acompanhamento próximo em cada etapa. A distância não é um
+              obstáculo para entregar tecnologia de qualidade.
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary>
+              Como funciona o diagnóstico gratuito?
+              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-body">
+              É uma conversa de cerca de 30 minutos, sem custo e sem compromisso.
+              Entendemos o seu desafio, tiramos dúvidas e mostramos caminhos
+              concretos de como a tecnologia pode ajudar a sua empresa a crescer.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contato">
+      <div class="container">
+        <div class="contact-grid">
           <div class="contact-info">
-            <h3>Informações de Contato</h3>
-            <p>
-              <strong>Endereço:</strong> Rua Olga Rossi Fabri, 221 - Brodowski,
-              SP
+            <span class="eyebrow">Fale com a gente</span>
+            <h3 style="margin-top:1rem">Conte qual é o seu maior desafio</h3>
+            <p style="color:var(--muted); margin-bottom:2rem">
+              Respondemos rápido, com ideias concretas e sem compromisso.
             </p>
-            <p><strong>Telefone:</strong> (16) 99123-7526</p>
-            <p><strong>Email:</strong> contato@playdev.com.br</p>
-            <p><strong>Horário:</strong> Segunda a Sexta, 8h às 18h</p>
+            <ul class="contact-list">
+              <li>
+                <span class="ci"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.94 14.46L2 22l5.7-1.5A10 10 0 1012 2z"/></svg></span>
+                <span class="cd"><span>WhatsApp</span><strong><a href="https://wa.me/5516991237526" target="_blank" rel="noopener">(16) 99123-7526</a></strong></span>
+              </li>
+              <li>
+                <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg></span>
+                <span class="cd"><span>E-mail</span><strong><a href="mailto:contato@playdev.com.br">contato@playdev.com.br</a></strong></span>
+              </li>
+              <li>
+                <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+                <span class="cd"><span>Endereço</span><strong>Brodowski, SP</strong></span>
+              </li>
+              <li>
+                <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+                <span class="cd"><span>Horário</span><strong>Seg a Sex, 8h às 18h</strong></span>
+              </li>
+            </ul>
           </div>
           <div class="contact-form">
-            <form id="contactForm" onsubmit="submitForm(event)">
-              <div class="form-group">
-                <label for="name">Nome</label>
-                <input type="text" id="name" name="name" required />
+            <form id="contactForm">
+              <div class="form-row">
+                <div class="field">
+                  <label for="name">Nome</label>
+                  <input type="text" id="name" name="name" placeholder="Seu nome" required />
+                </div>
+                <div class="field">
+                  <label for="company">Empresa</label>
+                  <input type="text" id="company" name="company" placeholder="Sua empresa" />
+                </div>
               </div>
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required />
+              <div class="field">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="voce@empresa.com.br" required />
               </div>
-              <div class="form-group">
-                <label for="subject">Assunto</label>
-                <input type="text" id="subject" name="subject" required />
+              <div class="field">
+                <label for="message">Como podemos ajudar?</label>
+                <textarea id="message" name="message" placeholder="Conte um pouco sobre o seu projeto ou desafio..." required></textarea>
               </div>
-              <div class="form-group">
-                <label for="message">Mensagem</label>
-                <textarea id="message" name="message" required></textarea>
-              </div>
-              <button type="submit" class="btn">Enviar Mensagem</button>
+              <button type="submit" class="btn btn-primary">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.94 14.46L2 22l5.7-1.5A10 10 0 1012 2z"/></svg>
+                Enviar pelo WhatsApp
+              </button>
+              <p class="form-note">Ao enviar, você será direcionado ao nosso WhatsApp com a mensagem pronta.</p>
             </form>
           </div>
         </div>
@@ -935,83 +1133,198 @@
     <!-- Footer -->
     <footer>
       <div class="container">
-        <div class="logo">
-          <img src="/images/logo.png" alt="PlayDev Logo" class="logo-img" />
+        <div class="footer-top">
+          <div class="footer-brand">
+            <img src="/images/logo.png" alt="PlayDev" />
+            <p>Tecnologia e inovação para pequenas e médias empresas entrarem, de verdade, no mundo digital.</p>
+          </div>
+          <div class="footer-cols">
+            <div class="footer-col">
+              <h4>Soluções</h4>
+              <a href="#servicos">Sites e landing pages</a>
+              <a href="#servicos">E-commerce</a>
+              <a href="#servicos">ERPs e sistemas</a>
+              <a href="#servicos">Automação</a>
+            </div>
+            <div class="footer-col">
+              <h4>Empresa</h4>
+              <a href="#cases">Casos de sucesso</a>
+              <a href="blog.html">Blog</a>
+              <a href="careers.html">Trabalhe conosco</a>
+              <a href="#contato">Contato</a>
+            </div>
+          </div>
         </div>
-        <div class="social-icons">
-          <a
-            href="https://www.linkedin.com/company/playdev-tecnologia-inovacao/"
-            ><i class="fab fa-linkedin"></i
-          ></a>
-          <!-- <a href="#"><i class="fab fa-github"></i></a> -->
-          <a href="https://www.instagram.com/playdev.company/"
-            ><i class="fab fa-instagram"></i
-          ></a>
-          <a
-            href="https://www.facebook.com/people/Play-Dev-Company/61550107082386/"
-            ><i class="fab fa-facebook"></i
-          ></a>
+        <div class="footer-bottom">
+          <span>&copy; 2026 PlayDev. Todos os direitos reservados.</span>
+          <div class="social">
+            <a href="https://www.linkedin.com/company/playdev-tecnologia-inovacao/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 002.5 6a2.5 2.5 0 105 0 2.5 2.5 0 00-2.52-2.5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.3 8.65 21 11 21 14.1V21h-4v-6.2c0-1.48-.03-3.38-2.06-3.38-2.06 0-2.37 1.6-2.37 3.27V21H9z"/></svg></a>
+            <a href="https://www.instagram.com/playdev.company/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></a>
+            <a href="https://www.facebook.com/people/Play-Dev-Company/61550107082386/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0022 12z"/></svg></a>
+          </div>
         </div>
-        <p>&copy; 2025 PlayDev. Todos os direitos reservados.</p>
       </div>
     </footer>
 
+    <!-- Floating WhatsApp -->
+    <a class="wa-float" href="https://wa.me/5516991237526?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20PlayDev." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.94 14.46L2 22l5.7-1.5A10 10 0 1012 2zm5.86 14.16c-.25.7-1.24 1.28-1.7 1.35-.44.06-.99.09-1.6-.1-.37-.12-.84-.27-1.45-.53-2.55-1.1-4.2-3.67-4.33-3.84-.13-.17-1.04-1.38-1.04-2.63 0-1.25.66-1.87.89-2.12.23-.25.5-.31.67-.31l.48.01c.15 0 .36-.06.56.43.2.5.7 1.72.76 1.84.06.12.1.27.02.43-.08.17-.12.27-.24.42-.12.15-.25.33-.36.44-.12.12-.24.25-.1.49.13.25.6.98 1.28 1.59.88.78 1.62 1.02 1.86 1.14.24.12.38.1.52-.06.14-.15.6-.7.76-.94.16-.24.32-.2.54-.12.22.08 1.4.66 1.64.78.24.12.4.18.46.28.06.1.06.6-.19 1.3z"/></svg>
+    </a>
+
+    <!-- Scripts -->
     <script>
-      // Função para enviar a mensagem para o WhatsApp
-      function submitForm(e) {
-        e.preventDefault(); // Evita o envio padrão do formulário
+      // Header shadow on scroll
+      const header = document.getElementById("header");
+      const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 8);
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
 
-        // Coleta os valores do formulário
-        const name = document.getElementById("name").value;
-        const email = document.getElementById("email").value;
-        const subject = document.getElementById("subject").value;
-        const message = document.getElementById("message").value;
-
-        // Cria a URL para o WhatsApp com os parâmetros
-        const messageText = `Olá, meu nome é ${name}. Email: ${email}. Assunto: ${subject}. Mensagem: ${message}`;
-        const whatsappLink = `https://wa.me/5516991237526?text=${encodeURIComponent(
-          messageText
-        )}`;
-
-        // Redireciona o usuário para o WhatsApp
-        window.location.href = whatsappLink;
-      }
-
-      const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
+      // Mobile menu
+      const toggle = document.getElementById("menuToggle");
       const menu = document.getElementById("menu");
+      toggle.addEventListener("click", () => {
+        const open = menu.classList.toggle("open");
+        toggle.setAttribute("aria-expanded", open);
+      });
+      menu.querySelectorAll("a").forEach((a) =>
+        a.addEventListener("click", () => menu.classList.remove("open"))
+      );
 
-      mobileMenuBtn?.addEventListener("click", () => {
-        menu?.classList.toggle("active");
-        mobileMenuBtn.classList.toggle("is-open");
-        mobileMenuBtn.innerHTML = mobileMenuBtn.classList.contains("is-open")
-          ? '<span style="font-size:1.2rem">×</span>'
-          : '<span style="font-size:1.2rem">≡</span>';
+      // Contact form -> WhatsApp
+      document.getElementById("contactForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const name = document.getElementById("name").value.trim();
+        const company = document.getElementById("company").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const message = document.getElementById("message").value.trim();
+        const text =
+          `Olá! Sou ${name}` +
+          (company ? ` da ${company}` : "") +
+          `.\nE-mail: ${email}\n\n${message}`;
+        window.open(
+          `https://wa.me/5516991237526?text=${encodeURIComponent(text)}`,
+          "_blank"
+        );
       });
 
-      menu?.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => menu.classList.remove("active"));
-      });
+      // Reveal on scroll
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+      document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
     </script>
 
+    <!-- Structured data -->
     <script type="application/ld+json">
       {
-        "@context": "http://schema.org",
-        "@type": "Organization",
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
         "name": "PlayDev",
-        "url": "https://www.playdev.com.br",
+        "description": "Desenvolvimento de software, sites, e-commerce, ERPs, sistemas sob medida e automação de processos para pequenas e médias empresas.",
+        "url": "https://www.playdev.com.br/",
         "logo": "https://www.playdev.com.br/images/logo.png",
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+55 16 99123-7526",
-          "contactType": "Customer Service",
-          "areaServed": "BR",
-          "availableLanguage": "Portuguese"
+        "image": "https://www.playdev.com.br/images/logo.png",
+        "email": "contato@playdev.com.br",
+        "telephone": "+55-16-99123-7526",
+        "priceRange": "$$",
+        "areaServed": "BR",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Brodowski",
+          "addressRegion": "SP",
+          "addressCountry": "BR"
         },
         "sameAs": [
           "https://www.linkedin.com/company/playdev-tecnologia-inovacao/",
           "https://www.instagram.com/playdev.company/",
           "https://www.facebook.com/people/Play-Dev-Company/61550107082386/"
         ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "PlayDev",
+        "url": "https://www.playdev.com.br/",
+        "inLanguage": "pt-BR"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Quanto tempo leva para desenvolver um sistema?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Depende do escopo, mas a maioria dos nossos projetos vai do briefing ao sistema no ar em 4 a 8 semanas. Projetos maiores são divididos em entregas menores, para você começar a ver valor rápido."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Quanto custa um projeto com a PlayDev?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Cada projeto é único, então o valor depende do que você precisa. No diagnóstico gratuito entendemos o seu desafio e apresentamos uma proposta clara, com escopo e preço definidos antes de você investir qualquer valor."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Que tipo de empresa vocês atendem?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Somos especialistas em pequenas e médias empresas (PMEs) de diversos segmentos: comércio, serviços, logística, indústria e mais. Se o seu negócio quer entrar no digital ou melhorar processos com tecnologia, a gente ajuda."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Vocês atendem empresas de outras cidades?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sim! Atendemos empresas de todo o Brasil de forma remota, com reuniões online e acompanhamento próximo em cada etapa. A distância não é um obstáculo para entregar tecnologia de qualidade."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Como funciona o diagnóstico gratuito?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "É uma conversa de cerca de 30 minutos, sem custo e sem compromisso. Entendemos o seu desafio, tiramos dúvidas e mostramos caminhos concretos de como a tecnologia pode ajudar a sua empresa a crescer."
+            }
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Desenvolvimento de software e soluções digitais para PMEs",
+        "provider": { "@type": "Organization", "name": "PlayDev", "url": "https://www.playdev.com.br/" },
+        "areaServed": { "@type": "Country", "name": "Brasil" },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Soluções PlayDev",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sites e landing pages" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "E-commerce e lojas virtuais" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ERPs e sistemas de gestão" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sistemas sob medida" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Automação de processos" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Nuvem e infraestrutura" } }
+          ]
+        }
       }
     </script>
   </body>

@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Entenda como iniciar automação em PMEs com foco em eficiência e redução de tarefas manuais. Guia prático e direto ao ponto pela PlayDev."
+    />
+    <meta name="theme-color" content="#0b0b12" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="PlayDev" />
+    <meta property="og:title" content="Automação para PMEs: por onde começar sem complicação" />
+    <meta
+      property="og:description"
+      content="Guia prático para automatizar processos com baixo risco e ganho rápido de eficiência."
+    />
+    <meta property="og:url" content="https://www.playdev.com.br/blog/automacao-para-pmes.html" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:image" content="https://www.playdev.com.br/images/logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Automação para PMEs: por onde começar sem complicação" />
+    <meta
+      name="twitter:description"
+      content="Guia prático para automatizar processos com baixo risco e ganho rápido de eficiência."
+    />
+    <meta name="twitter:image" content="https://www.playdev.com.br/images/logo.png" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="canonical" href="https://www.playdev.com.br/blog/automacao-para-pmes.html" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Automação para PMEs: por onde começar | Blog PlayDev</title>
+
+    <style>
+      :root {
+        --accent: #8b5cf6;
+        --accent-strong: #a78bfa;
+        --accent-deep: #7c3aed;
+        --bg: #0b0b12;
+        --bg-soft: #101018;
+        --surface: #14141e;
+        --surface-2: #191924;
+        --text: #ededf2;
+        --prose: #d4d4de;
+        --muted: #9d9daf;
+        --muted-dim: #74748a;
+        --border: rgba(255, 255, 255, 0.08);
+        --border-strong: rgba(255, 255, 255, 0.14);
+        --radius: 16px;
+        --radius-lg: 22px;
+        --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+      }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+      body {
+        font-family: "Inter", system-ui, -apple-system, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.75;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+      h1, h2, h3 {
+        font-family: "Sora", "Inter", sans-serif;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+        font-weight: 700;
+      }
+      a { color: inherit; text-decoration: none; }
+      img { max-width: 100%; display: block; }
+      ::selection { background: var(--accent-deep); color: #fff; }
+
+      .container { width: 90%; max-width: 1140px; margin: 0 auto; }
+      .prose-width { width: 90%; max-width: 720px; margin: 0 auto; }
+
+      /* Reading progress */
+      .progress-bar {
+        position: fixed;
+        top: 0; left: 0;
+        height: 3px;
+        width: 0%;
+        background: linear-gradient(90deg, var(--accent), var(--accent-strong));
+        z-index: 200;
+        transition: width 0.1s linear;
+      }
+
+      /* Buttons */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.55rem;
+        padding: 0.9rem 1.5rem;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 0.98rem;
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: transform 0.2s var(--ease), background 0.2s var(--ease), border-color 0.2s var(--ease);
+        white-space: nowrap;
+      }
+      .btn-primary { background: var(--accent); color: #fff; }
+      .btn-primary:hover { background: var(--accent-deep); transform: translateY(-2px); }
+      .btn-ghost { background: transparent; color: var(--text); border-color: var(--border-strong); }
+      .btn-ghost:hover { border-color: var(--accent); color: #fff; transform: translateY(-2px); }
+      .btn svg { width: 18px; height: 18px; }
+
+      /* Header */
+      header {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        z-index: 100;
+        background: rgba(11, 11, 18, 0.72);
+        backdrop-filter: saturate(160%) blur(12px);
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.3s;
+      }
+      header.scrolled { border-bottom-color: var(--border); }
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 74px;
+      }
+      .logo-img { height: 30px; width: auto; }
+      nav ul { list-style: none; display: flex; align-items: center; gap: 0.4rem; }
+      nav ul li a {
+        padding: 0.5rem 0.85rem;
+        font-size: 0.94rem;
+        font-weight: 500;
+        color: var(--muted);
+        border-radius: 8px;
+        transition: color 0.2s;
+      }
+      nav ul li a:hover, nav ul li a.active { color: var(--text); }
+      .nav-cta { display: flex; align-items: center; gap: 0.75rem; }
+      .menu-toggle {
+        display: none;
+        background: none; border: none;
+        color: var(--text); cursor: pointer;
+        width: 44px; height: 44px;
+        align-items: center; justify-content: center;
+      }
+      .menu-toggle svg { width: 26px; height: 26px; }
+
+      /* Article hero */
+      .article-hero {
+        position: relative;
+        padding: 8rem 0 2.5rem;
+        overflow: hidden;
+        border-bottom: 1px solid var(--border);
+      }
+      .article-hero::before {
+        content: "";
+        position: absolute;
+        top: -30%; left: 50%;
+        transform: translateX(-50%);
+        width: 900px; height: 640px;
+        background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.16), transparent 60%);
+        pointer-events: none;
+      }
+      .article-hero .prose-width { position: relative; }
+      .breadcrumb {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.85rem;
+        color: var(--muted);
+        margin-bottom: 1.4rem;
+      }
+      .breadcrumb a:hover { color: var(--accent-strong); }
+      .breadcrumb svg { width: 14px; height: 14px; opacity: 0.6; }
+      .cat-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.35rem 0.85rem;
+        border-radius: 999px;
+        background: rgba(139, 92, 246, 0.12);
+        border: 1px solid rgba(139, 92, 246, 0.28);
+        color: var(--accent-strong);
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+      }
+      .article-hero h1 {
+        font-size: clamp(2rem, 4.5vw, 3rem);
+        font-weight: 800;
+        margin: 1.2rem 0 1.4rem;
+      }
+      .article-meta {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+      .author {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        font-weight: 500;
+        color: var(--text);
+      }
+      .author .avatar {
+        width: 34px; height: 34px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+        display: grid; place-items: center;
+        font-family: "Sora", sans-serif;
+        font-weight: 700;
+        font-size: 0.85rem;
+        color: #fff;
+      }
+      .dot-sep { width: 4px; height: 4px; border-radius: 50%; background: var(--muted-dim); }
+
+      /* Article body */
+      article { padding: 3rem 0 1rem; }
+      .prose > p, .prose > ul { color: var(--prose); font-size: 1.06rem; }
+      .prose > p + p { margin-top: 1.1rem; }
+      .lead {
+        font-size: 1.22rem !important;
+        line-height: 1.7;
+        color: var(--text) !important;
+        margin-bottom: 1.5rem;
+      }
+      .prose h2 {
+        font-size: 1.5rem;
+        margin: 2.5rem 0 0.9rem;
+        padding-left: 1rem;
+        position: relative;
+      }
+      .prose h2::before {
+        content: "";
+        position: absolute;
+        left: 0; top: 0.15em; bottom: 0.15em;
+        width: 4px;
+        border-radius: 4px;
+        background: linear-gradient(180deg, var(--accent), var(--accent-deep));
+      }
+      .prose ul { list-style: none; margin: 1rem 0; display: grid; gap: 0.7rem; }
+      .prose ul li {
+        position: relative;
+        padding-left: 2rem;
+      }
+      .prose ul li::before {
+        content: "";
+        position: absolute;
+        left: 0; top: 0.5em;
+        width: 20px; height: 20px;
+        background: rgba(139, 92, 246, 0.14);
+        border-radius: 6px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23a78bfa' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      /* Callout */
+      .callout {
+        display: flex;
+        gap: 1rem;
+        margin: 2rem 0;
+        padding: 1.4rem 1.6rem;
+        background: linear-gradient(120deg, rgba(139, 92, 246, 0.1), rgba(139, 92, 246, 0.03));
+        border: 1px solid rgba(139, 92, 246, 0.22);
+        border-radius: var(--radius);
+      }
+      .callout svg { width: 24px; height: 24px; color: var(--accent-strong); flex-shrink: 0; margin-top: 0.15rem; }
+      .callout strong { color: var(--text); display: block; margin-bottom: 0.2rem; }
+      .callout p { color: var(--prose); font-size: 0.98rem; margin: 0; }
+
+      /* Takeaways */
+      .takeaways {
+        margin: 2.5rem 0 1rem;
+        padding: 1.75rem;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+      }
+      .takeaways h3 {
+        font-size: 1.15rem;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .takeaways h3 svg { width: 20px; height: 20px; color: var(--accent-strong); }
+      .takeaways ul { list-style: none; display: grid; gap: 0.65rem; }
+      .takeaways li { position: relative; padding-left: 1.7rem; color: var(--prose); font-size: 0.98rem; }
+      .takeaways li::before {
+        content: "";
+        position: absolute; left: 0; top: 0.55em;
+        width: 8px; height: 8px; border-radius: 50%;
+        background: var(--accent);
+      }
+
+      /* End CTA */
+      .article-cta {
+        position: relative;
+        overflow: hidden;
+        margin: 3rem 0 4rem;
+        padding: 2.5rem;
+        text-align: center;
+        background:
+          radial-gradient(ellipse at 50% 0%, rgba(139, 92, 246, 0.22), transparent 60%),
+          linear-gradient(150deg, #1a1330, #120f22);
+        border: 1px solid rgba(139, 92, 246, 0.25);
+        border-radius: var(--radius-lg);
+      }
+      .article-cta h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 0.6rem; }
+      .article-cta p { color: var(--muted); max-width: 460px; margin: 0 auto 1.5rem; }
+
+      /* Related */
+      .related { padding: 2rem 0 4rem; }
+      .related-label {
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted-dim);
+        margin-bottom: 1rem;
+      }
+      .related-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+        padding: 1.5rem 1.75rem;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        transition: border-color 0.25s, transform 0.25s, background 0.25s;
+      }
+      .related-card:hover { border-color: var(--border-strong); background: var(--surface-2); transform: translateY(-3px); }
+      .related-card .rc-meta { font-size: 0.82rem; color: var(--muted-dim); margin-bottom: 0.3rem; }
+      .related-card h3 { font-size: 1.15rem; }
+      .related-card .arrow {
+        flex-shrink: 0;
+        width: 44px; height: 44px;
+        border-radius: 50%;
+        display: grid; place-items: center;
+        background: rgba(139, 92, 246, 0.12);
+        color: var(--accent-strong);
+      }
+      .related-card .arrow svg { width: 20px; height: 20px; }
+
+      /* Footer */
+      footer { border-top: 1px solid var(--border); padding: 3rem 0 2rem; }
+      .footer-bottom {
+        display: flex; justify-content: space-between; align-items: center;
+        gap: 1rem; flex-wrap: wrap;
+        color: var(--muted-dim); font-size: 0.88rem;
+      }
+      .footer-bottom img { height: 26px; }
+      .social { display: flex; gap: 0.6rem; }
+      .social a {
+        width: 38px; height: 38px; border-radius: 10px;
+        display: grid; place-items: center;
+        border: 1px solid var(--border); color: var(--muted);
+        transition: color 0.2s, border-color 0.2s;
+      }
+      .social a:hover { color: var(--text); border-color: var(--accent); }
+      .social svg { width: 18px; height: 18px; }
+
+      /* Floating WhatsApp */
+      .wa-float {
+        position: fixed; right: 22px; bottom: 22px; z-index: 90;
+        width: 58px; height: 58px; border-radius: 50%;
+        background: #25d366;
+        display: grid; place-items: center;
+        box-shadow: 0 10px 30px rgba(37, 211, 102, 0.35);
+        transition: transform 0.2s var(--ease);
+      }
+      .wa-float:hover { transform: scale(1.08); }
+      .wa-float svg { width: 30px; height: 30px; color: #fff; }
+      .wa-float::after {
+        content: ""; position: absolute; inset: 0;
+        border-radius: 50%; border: 2px solid rgba(37, 211, 102, 0.5);
+        animation: wa-pulse 2.2s ease-out infinite;
+      }
+      @keyframes wa-pulse {
+        0% { transform: scale(1); opacity: 0.7; }
+        100% { transform: scale(1.6); opacity: 0; }
+      }
+
+      @media (max-width: 760px) {
+        nav ul {
+          position: fixed; top: 74px; left: 0; right: 0;
+          flex-direction: column; align-items: stretch;
+          background: rgba(11, 11, 18, 0.98);
+          backdrop-filter: blur(12px);
+          border-bottom: 1px solid var(--border);
+          padding: 1rem 5%; gap: 0.2rem;
+          transform: translateY(-120%);
+          transition: transform 0.3s var(--ease);
+          visibility: hidden;
+        }
+        nav ul.open { transform: translateY(0); visibility: visible; }
+        nav ul li a { display: block; padding: 0.75rem 0.85rem; }
+        .menu-toggle { display: flex; }
+        .nav-cta .btn-ghost { display: none; }
+        .related-card { flex-direction: column; align-items: flex-start; text-align: left; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation: none !important; transition: none !important; scroll-behavior: auto !important;
+        }
+      }
+    </style>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Automação para PMEs: por onde começar sem complicação",
+        "description": "Entenda como iniciar automação em PMEs com foco em eficiência e redução de tarefas manuais.",
+        "datePublished": "2026-02-20",
+        "dateModified": "2026-02-20",
+        "author": { "@type": "Organization", "name": "PlayDev" },
+        "publisher": {
+          "@type": "Organization",
+          "name": "PlayDev",
+          "logo": { "@type": "ImageObject", "url": "https://www.playdev.com.br/images/logo.png" }
+        },
+        "mainEntityOfPage": "https://www.playdev.com.br/blog/automacao-para-pmes.html"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://www.playdev.com.br/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.playdev.com.br/blog.html" },
+          { "@type": "ListItem", "position": 3, "name": "Automação para PMEs: por onde começar sem complicação", "item": "https://www.playdev.com.br/blog/automacao-para-pmes.html" }
+        ]
+      }
+    </script>
+  </head>
+
+  <body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Header -->
+    <header id="header">
+      <div class="container nav">
+        <a href="../index.html" aria-label="PlayDev — página inicial">
+          <img src="/images/logo.png" alt="PlayDev" class="logo-img" />
+        </a>
+        <nav>
+          <ul id="menu">
+            <li><a href="../index.html#servicos">Serviços</a></li>
+            <li><a href="../index.html#processo">Como funciona</a></li>
+            <li><a href="../index.html#cases">Casos de sucesso</a></li>
+            <li><a href="../blog.html" class="active">Blog</a></li>
+            <li><a href="../careers.html">Carreiras</a></li>
+            <li><a href="../index.html#contato">Contato</a></li>
+          </ul>
+        </nav>
+        <div class="nav-cta">
+          <a href="../index.html#contato" class="btn btn-ghost">Falar com um especialista</a>
+          <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Article hero -->
+    <div class="article-hero">
+      <div class="prose-width">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="../blog.html">Blog</a>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          <span>Automação</span>
+        </nav>
+        <span class="cat-tag">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/></svg>
+          Automação
+        </span>
+        <h1>Automação para PMEs: por onde começar sem complicação</h1>
+        <div class="article-meta">
+          <span class="author">
+            <span class="avatar">PD</span>
+            Equipe PlayDev
+          </span>
+          <span class="dot-sep"></span>
+          <time datetime="2026-02-20">20 fev 2026</time>
+          <span class="dot-sep"></span>
+          <span>4 min de leitura</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Article -->
+    <main>
+      <article class="prose-width prose">
+        <p class="lead">
+          Se a operação da sua empresa depende de tarefas repetitivas, a
+          automação pode liberar tempo do time e reduzir erros. O segredo é
+          começar pequeno, em processos que já têm volume e padrão.
+        </p>
+
+        <h2>1. Mapeie uma rotina que se repete</h2>
+        <p>
+          Foque em um processo simples: cadastro de leads, emissão de propostas
+          ou atualizações de planilha. Se algo acontece todos os dias de forma
+          previsível, é um ótimo candidato para automatização.
+        </p>
+
+        <div class="callout">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7c.5.4.8 1 .9 1.6h6.2c.1-.6.4-1.2.9-1.6A7 7 0 0012 2z"/></svg>
+          <div>
+            <strong>Dica prática</strong>
+            <p>Escolha o processo que mais irrita o time no dia a dia. Além do ganho de eficiência, você conquista o apoio das pessoas para os próximos passos.</p>
+          </div>
+        </div>
+
+        <h2>2. Defina qual resultado você espera</h2>
+        <ul>
+          <li>Reduzir tempo de execução</li>
+          <li>Diminuir retrabalho</li>
+          <li>Evitar falhas manuais</li>
+        </ul>
+
+        <h2>3. Faça um piloto curto</h2>
+        <p>
+          Em vez de automatizar toda a operação, implemente uma parte do fluxo e
+          acompanhe por algumas semanas. Com dados reais, fica mais fácil
+          escalar com segurança.
+        </p>
+
+        <h2>4. Evolua com integração</h2>
+        <p>
+          Depois de validar o piloto, conecte a automação aos sistemas que a
+          empresa já utiliza. Assim, a solução sai do modo “atalho” e vira parte
+          da operação principal.
+        </p>
+
+        <div class="takeaways">
+          <h3>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+            Principais aprendizados
+          </h3>
+          <ul>
+            <li>Comece por um processo repetitivo, com volume e padrão claros.</li>
+            <li>Defina antes qual resultado você quer medir.</li>
+            <li>Valide com um piloto curto antes de escalar.</li>
+            <li>Integre aos sistemas existentes para consolidar a solução.</li>
+          </ul>
+        </div>
+
+        <div class="article-cta">
+          <h2>Quer automatizar um processo da sua empresa?</h2>
+          <p>A gente te ajuda a identificar a melhor oportunidade e coloca a solução em prática. Diagnóstico gratuito e sem compromisso.</p>
+          <a href="https://wa.me/5516991237526?text=Ol%C3%A1!%20Li%20o%20artigo%20sobre%20automa%C3%A7%C3%A3o%20e%20gostaria%20de%20conversar." target="_blank" rel="noopener" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.94 14.46L2 22l5.7-1.5A10 10 0 1012 2z"/></svg>
+            Falar no WhatsApp
+          </a>
+        </div>
+      </article>
+
+      <!-- Related -->
+      <section class="related">
+        <div class="prose-width">
+          <p class="related-label">Continue lendo</p>
+          <a class="related-card" href="como-escolher-software-sob-medida.html">
+            <div>
+              <p class="rc-meta">5 min de leitura</p>
+              <h3>Como escolher um software sob medida para sua empresa</h3>
+            </div>
+            <span class="arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container footer-bottom">
+        <img src="/images/logo.png" alt="PlayDev" />
+        <span>&copy; 2026 PlayDev. Todos os direitos reservados.</span>
+        <div class="social">
+          <a href="https://www.linkedin.com/company/playdev-tecnologia-inovacao/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 002.5 6a2.5 2.5 0 105 0 2.5 2.5 0 00-2.52-2.5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.3 8.65 21 11 21 14.1V21h-4v-6.2c0-1.48-.03-3.38-2.06-3.38-2.06 0-2.37 1.6-2.37 3.27V21H9z"/></svg></a>
+          <a href="https://www.instagram.com/playdev.company/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></a>
+          <a href="https://www.facebook.com/people/Play-Dev-Company/61550107082386/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0022 12z"/></svg></a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a class="wa-float" href="https://wa.me/5516991237526?text=Ol%C3%A1!%20Vim%20pelo%20blog%20da%20PlayDev." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.94 14.46L2 22l5.7-1.5A10 10 0 1012 2zm5.86 14.16c-.25.7-1.24 1.28-1.7 1.35-.44.06-.99.09-1.6-.1-.37-.12-.84-.27-1.45-.53-2.55-1.1-4.2-3.67-4.33-3.84-.13-.17-1.04-1.38-1.04-2.63 0-1.25.66-1.87.89-2.12.23-.25.5-.31.67-.31l.48.01c.15 0 .36-.06.56.43.2.5.7 1.72.76 1.84.06.12.1.27.02.43-.08.17-.12.27-.24.42-.12.15-.25.33-.36.44-.12.12-.24.25-.1.49.13.25.6.98 1.28 1.59.88.78 1.62 1.02 1.86 1.14.24.12.38.1.52-.06.14-.15.6-.7.76-.94.16-.24.32-.2.54-.12.22.08 1.4.66 1.64.78.24.12.4.18.46.28.06.1.06.6-.19 1.3z"/></svg>
+    </a>
+
+    <script>
+      const header = document.getElementById("header");
+      const progressBar = document.getElementById("progressBar");
+      const onScroll = () => {
+        header.classList.toggle("scrolled", window.scrollY > 8);
+        const h = document.documentElement;
+        const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight);
+        progressBar.style.width = Math.min(scrolled * 100, 100) + "%";
+      };
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+
+      const toggle = document.getElementById("menuToggle");
+      const menu = document.getElementById("menu");
+      toggle.addEventListener("click", () => {
+        const open = menu.classList.toggle("open");
+        toggle.setAttribute("aria-expanded", open);
+      });
+      menu.querySelectorAll("a").forEach((a) =>
+        a.addEventListener("click", () => menu.classList.remove("open"))
+      );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Trabalhe conosco | PlayDev — Vagas em tecnologia</title>
+    <meta
+      name="description"
+      content="Faça parte do time da PlayDev. Veja as vagas abertas em desenvolvimento de software e envie seu currículo para trabalhar com tecnologia e inovação para PMEs."
+    />
+    <meta
+      name="keywords"
+      content="vagas de emprego, trabalhe conosco, carreiras em TI, desenvolvedor, tecnologia, PlayDev"
+    />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="theme-color" content="#0b0b12" />
+    <link rel="canonical" href="https://www.playdev.com.br/careers.html" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="PlayDev" />
+    <meta property="og:title" content="Trabalhe conosco | PlayDev" />
+    <meta
+      property="og:description"
+      content="Junte-se ao nosso time de especialistas em desenvolvimento de software e soluções digitais."
+    />
+    <meta property="og:url" content="https://www.playdev.com.br/careers.html" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:image" content="https://www.playdev.com.br/images/logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Trabalhe conosco | PlayDev" />
+    <meta name="twitter:description" content="Veja as vagas abertas na PlayDev e venha construir soluções digitais com a gente." />
+    <meta name="twitter:image" content="https://www.playdev.com.br/images/logo.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --accent: #8b5cf6;
+        --accent-strong: #a78bfa;
+        --accent-deep: #7c3aed;
+        --bg: #0b0b12;
+        --bg-soft: #101018;
+        --surface: #14141e;
+        --surface-2: #191924;
+        --text: #ededf2;
+        --muted: #9d9daf;
+        --muted-dim: #74748a;
+        --border: rgba(255, 255, 255, 0.08);
+        --border-strong: rgba(255, 255, 255, 0.14);
+        --radius: 16px;
+        --radius-lg: 22px;
+        --max: 1140px;
+        --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+      }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+      body {
+        font-family: "Inter", system-ui, -apple-system, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+      h1, h2, h3 {
+        font-family: "Sora", "Inter", sans-serif;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+        font-weight: 700;
+      }
+      a { color: inherit; text-decoration: none; }
+      img { max-width: 100%; display: block; }
+      ::selection { background: var(--accent-deep); color: #fff; }
+
+      .container { width: 90%; max-width: var(--max); margin: 0 auto; }
+      section { padding: 5rem 0; }
+
+      /* Buttons */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.55rem;
+        padding: 0.9rem 1.5rem;
+        border-radius: 12px;
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+        font-size: 0.98rem;
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: transform 0.2s var(--ease), background 0.2s var(--ease), border-color 0.2s var(--ease);
+        white-space: nowrap;
+      }
+      .btn-primary { background: var(--accent); color: #fff; }
+      .btn-primary:hover { background: var(--accent-deep); transform: translateY(-2px); }
+      .btn-ghost { background: transparent; color: var(--text); border-color: var(--border-strong); }
+      .btn-ghost:hover { border-color: var(--accent); color: #fff; transform: translateY(-2px); }
+      .btn svg { width: 18px; height: 18px; }
+
+      /* Header */
+      header {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        z-index: 100;
+        background: rgba(11, 11, 18, 0.72);
+        backdrop-filter: saturate(160%) blur(12px);
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.3s, background 0.3s;
+      }
+      header.scrolled { border-bottom-color: var(--border); }
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 74px;
+      }
+      .logo-img { height: 30px; width: auto; }
+      nav ul { list-style: none; display: flex; align-items: center; gap: 0.4rem; }
+      nav ul li a {
+        padding: 0.5rem 0.85rem;
+        font-size: 0.94rem;
+        font-weight: 500;
+        color: var(--muted);
+        border-radius: 8px;
+        transition: color 0.2s;
+      }
+      nav ul li a:hover, nav ul li a.active { color: var(--text); }
+      .nav-cta { display: flex; align-items: center; gap: 0.75rem; }
+      .menu-toggle {
+        display: none;
+        background: none; border: none;
+        color: var(--text); cursor: pointer;
+        width: 44px; height: 44px;
+        align-items: center; justify-content: center;
+      }
+      .menu-toggle svg { width: 26px; height: 26px; }
+
+      /* Page hero */
+      .page-hero {
+        position: relative;
+        padding: 10rem 0 3rem;
+        overflow: hidden;
+      }
+      .page-hero::before {
+        content: "";
+        position: absolute;
+        top: -20%; left: 50%;
+        transform: translateX(-50%);
+        width: 850px; height: 650px;
+        background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.15), transparent 62%);
+        pointer-events: none;
+      }
+      .page-hero .container { position: relative; max-width: 780px; }
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent-strong);
+      }
+      .eyebrow::before { content: ""; width: 20px; height: 1px; background: var(--accent); }
+      .page-hero h1 {
+        font-size: clamp(2.3rem, 4.5vw, 3.4rem);
+        font-weight: 800;
+        margin: 1rem 0 1rem;
+      }
+      .page-hero p { color: var(--muted); font-size: 1.08rem; }
+
+      .section-head { max-width: 640px; margin-bottom: 2.5rem; }
+      .section-head h2 { font-size: clamp(1.7rem, 3vw, 2.3rem); margin: 0.9rem 0 0.7rem; }
+      .section-head p { color: var(--muted); }
+
+      /* Jobs */
+      .jobs-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 1.25rem;
+      }
+      .empty-state {
+        grid-column: 1 / -1;
+        text-align: center;
+        padding: 3.5rem 2rem;
+        border: 1px dashed var(--border-strong);
+        border-radius: var(--radius-lg);
+        background: var(--surface);
+      }
+      .empty-state svg { width: 40px; height: 40px; color: var(--accent-strong); margin-bottom: 1rem; }
+      .empty-state h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+      .empty-state p { color: var(--muted); max-width: 440px; margin: 0 auto; }
+      .job-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.75rem;
+        transition: border-color 0.25s, transform 0.25s, background 0.25s;
+      }
+      .job-card:hover { border-color: var(--border-strong); background: var(--surface-2); transform: translateY(-4px); }
+      .job-title { font-size: 1.3rem; margin-bottom: 0.6rem; }
+      .job-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+      .job-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-size: 0.82rem;
+        color: var(--muted);
+        border: 1px solid var(--border);
+        padding: 0.28rem 0.7rem;
+        border-radius: 999px;
+      }
+      .job-desc { color: var(--muted); margin-bottom: 1.2rem; font-size: 0.96rem; }
+
+      /* Form */
+      .form-section { background: var(--bg-soft); border-top: 1px solid var(--border); }
+      .form-container {
+        max-width: 640px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 2.25rem;
+      }
+      .form-group { margin-bottom: 1.2rem; }
+      .form-group label { display: block; margin-bottom: 0.5rem; color: var(--muted); font-weight: 500; font-size: 0.88rem; }
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.85rem 1rem;
+        border-radius: 11px;
+        border: 1px solid var(--border);
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Inter", sans-serif;
+        font-size: 0.96rem;
+        transition: border-color 0.2s;
+      }
+      .form-group input::placeholder,
+      .form-group textarea::placeholder { color: var(--muted-dim); }
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus { outline: none; border-color: var(--accent); }
+      .form-group select {
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23a78bfa' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 0.9rem center;
+        padding-right: 2.5rem;
+      }
+      .form-group textarea { resize: vertical; min-height: 120px; }
+      .file-input-wrapper { position: relative; width: 100%; }
+      .file-input-label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        width: 100%;
+        padding: 1.3rem;
+        background: rgba(139, 92, 246, 0.06);
+        border: 2px dashed var(--border-strong);
+        border-radius: 12px;
+        cursor: pointer;
+        transition: border-color 0.2s, background 0.2s;
+        color: var(--muted);
+        font-size: 0.94rem;
+      }
+      .file-input-label svg { width: 20px; height: 20px; color: var(--accent-strong); }
+      .file-input-label:hover { border-color: var(--accent); background: rgba(139, 92, 246, 0.1); }
+      .form-group input[type="file"] { display: none; }
+      .file-name { font-size: 0.85rem; color: var(--muted); margin-top: 0.4rem; }
+      .form-note { font-size: 0.82rem; color: var(--muted-dim); margin-top: 0.4rem; }
+      .form-actions { margin-top: 1.5rem; }
+      .submit-btn { width: 100%; }
+      .required { color: var(--accent-strong); }
+      .success-message {
+        display: none;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem 1.1rem;
+        background: rgba(34, 197, 94, 0.1);
+        border: 1px solid rgba(34, 197, 94, 0.3);
+        border-radius: 12px;
+        color: #86efac;
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+      }
+      .success-message.show { display: flex; }
+      .success-message svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+      /* Footer */
+      footer { border-top: 1px solid var(--border); padding: 3rem 0 2rem; }
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+        color: var(--muted-dim);
+        font-size: 0.88rem;
+      }
+      .footer-bottom img { height: 26px; }
+      .social { display: flex; gap: 0.6rem; }
+      .social a {
+        width: 38px; height: 38px;
+        border-radius: 10px;
+        display: grid; place-items: center;
+        border: 1px solid var(--border);
+        color: var(--muted);
+        transition: color 0.2s, border-color 0.2s;
+      }
+      .social a:hover { color: var(--text); border-color: var(--accent); }
+      .social svg { width: 18px; height: 18px; }
+
+      /* Floating WhatsApp */
+      .wa-float {
+        position: fixed; right: 22px; bottom: 22px;
+        z-index: 90;
+        width: 58px; height: 58px;
+        border-radius: 50%;
+        background: #25d366;
+        display: grid; place-items: center;
+        box-shadow: 0 10px 30px rgba(37, 211, 102, 0.35);
+        transition: transform 0.2s var(--ease);
+      }
+      .wa-float:hover { transform: scale(1.08); }
+      .wa-float svg { width: 30px; height: 30px; color: #fff; }
+      .wa-float::after {
+        content: "";
+        position: absolute; inset: 0;
+        border-radius: 50%;
+        border: 2px solid rgba(37, 211, 102, 0.5);
+        animation: wa-pulse 2.2s ease-out infinite;
+      }
+      @keyframes wa-pulse {
+        0% { transform: scale(1); opacity: 0.7; }
+        100% { transform: scale(1.6); opacity: 0; }
+      }
+
+      @media (max-width: 760px) {
+        section { padding: 3.5rem 0; }
+        nav ul {
+          position: fixed;
+          top: 74px; left: 0; right: 0;
+          flex-direction: column;
+          align-items: stretch;
+          background: rgba(11, 11, 18, 0.98);
+          backdrop-filter: blur(12px);
+          border-bottom: 1px solid var(--border);
+          padding: 1rem 5%;
+          gap: 0.2rem;
+          transform: translateY(-120%);
+          transition: transform 0.3s var(--ease);
+          visibility: hidden;
+        }
+        nav ul.open { transform: translateY(0); visibility: visible; }
+        nav ul li a { display: block; padding: 0.75rem 0.85rem; }
+        .menu-toggle { display: flex; }
+        .nav-cta .btn-ghost { display: none; }
+        .form-container { padding: 1.5rem; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation: none !important;
+          transition: none !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header id="header">
+      <div class="container nav">
+        <a href="index.html" aria-label="PlayDev — página inicial">
+          <img src="/images/logo.png" alt="PlayDev" class="logo-img" />
+        </a>
+        <nav>
+          <ul id="menu">
+            <li><a href="index.html#servicos">Serviços</a></li>
+            <li><a href="index.html#processo">Como funciona</a></li>
+            <li><a href="index.html#cases">Casos de sucesso</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="careers.html" class="active" aria-current="page">Carreiras</a></li>
+            <li><a href="index.html#contato">Contato</a></li>
+          </ul>
+        </nav>
+        <div class="nav-cta">
+          <a href="#apply" class="btn btn-ghost">Enviar currículo</a>
+          <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow">Trabalhe conosco</span>
+        <h1>Venha construir tecnologia que gera impacto real</h1>
+        <p>
+          Estamos sempre de olho em profissionais talentosos e apaixonados por
+          tecnologia. Se você quer crescer, aprender e criar soluções que
+          transformam empresas, a gente quer te conhecer.
+        </p>
+      </div>
+    </section>
+
+    <!-- Jobs -->
+    <section id="vacancies">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Oportunidades abertas</span>
+          <h2>Nossas vagas</h2>
+          <p>
+            Aqui você encontra as posições em aberto na PlayDev. Não achou uma
+            vaga com a sua cara? Envie o currículo mesmo assim — guardamos para
+            futuras oportunidades.
+          </p>
+        </div>
+        <div class="jobs-grid" id="jobsList">
+          <div class="empty-state">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+            <h3>Nenhuma vaga aberta no momento</h3>
+            <p>
+              Mas não deixe de enviar seu currículo pelo formulário abaixo —
+              assim que surgir uma oportunidade, entramos em contato com você.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Application form -->
+    <section id="apply" class="form-section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Inscrição</span>
+          <h2>Envie seu currículo</h2>
+          <p>
+            Preencha o formulário, anexe seu currículo e conte um pouco sobre
+            você. Analisamos com carinho e retornamos em breve.
+          </p>
+        </div>
+
+        <div class="form-container">
+          <div class="success-message" id="successMessage">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Currículo enviado com sucesso! Responderemos em breve.
+          </div>
+
+          <form
+            id="applicationForm"
+            action="https://formspree.io/f/YOUR_FORM_ID"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <div class="form-group">
+              <label for="fullname">Nome completo <span class="required">*</span></label>
+              <input type="text" id="fullname" name="fullname" required placeholder="Seu nome completo" />
+            </div>
+
+            <div class="form-group">
+              <label for="email">E-mail <span class="required">*</span></label>
+              <input type="email" id="email" name="email" required placeholder="voce@exemplo.com" />
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Telefone <span class="required">*</span></label>
+              <input type="tel" id="phone" name="phone" required placeholder="(16) 99999-9999" />
+            </div>
+
+            <div class="form-group">
+              <label for="position">Área de interesse <span class="required">*</span></label>
+              <select id="position" name="position" required>
+                <option value="">Selecione uma área</option>
+                <option value="Desenvolvimento Frontend">Desenvolvimento Frontend</option>
+                <option value="Desenvolvimento Backend">Desenvolvimento Backend</option>
+                <option value="Desenvolvimento Full Stack">Desenvolvimento Full Stack</option>
+                <option value="Design / UX">Design / UX</option>
+                <option value="Comercial / Vendas">Comercial / Vendas</option>
+                <option value="Outro">Outro</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="resume">Currículo <span class="required">*</span></label>
+              <div class="file-input-wrapper">
+                <label for="resume" class="file-input-label">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><path d="M17 8l-5-5-5 5M12 3v12"/></svg>
+                  <span>Clique para enviar ou arraste seu currículo</span>
+                </label>
+                <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required />
+                <div class="file-name" id="fileName"></div>
+              </div>
+              <div class="form-note">Formatos aceitos: PDF, DOC, DOCX (máximo 5 MB)</div>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Mensagem (opcional)</label>
+              <textarea id="message" name="message" placeholder="Conte-nos por que você gostaria de trabalhar com a PlayDev..."></textarea>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary submit-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                Enviar candidatura
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container footer-bottom">
+        <img src="/images/logo.png" alt="PlayDev" />
+        <span>&copy; 2026 PlayDev. Todos os direitos reservados.</span>
+        <div class="social">
+          <a href="https://www.linkedin.com/company/playdev-tecnologia-inovacao/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 002.5 6a2.5 2.5 0 105 0 2.5 2.5 0 00-2.52-2.5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.3 8.65 21 11 21 14.1V21h-4v-6.2c0-1.48-.03-3.38-2.06-3.38-2.06 0-2.37 1.6-2.37 3.27V21H9z"/></svg></a>
+          <a href="https://www.instagram.com/playdev.company/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></a>
+          <a href="https://www.facebook.com/people/Play-Dev-Company/61550107082386/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0022 12z"/></svg></a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a class="wa-float" href="https://wa.me/5516991237526?text=Ol%C3%A1!%20Vim%20pela%20p%C3%A1gina%20de%20carreiras%20da%20PlayDev." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.94 14.46L2 22l5.7-1.5A10 10 0 1012 2zm5.86 14.16c-.25.7-1.24 1.28-1.7 1.35-.44.06-.99.09-1.6-.1-.37-.12-.84-.27-1.45-.53-2.55-1.1-4.2-3.67-4.33-3.84-.13-.17-1.04-1.38-1.04-2.63 0-1.25.66-1.87.89-2.12.23-.25.5-.31.67-.31l.48.01c.15 0 .36-.06.56.43.2.5.7 1.72.76 1.84.06.12.1.27.02.43-.08.17-.12.27-.24.42-.12.15-.25.33-.36.44-.12.12-.24.25-.1.49.13.25.6.98 1.28 1.59.88.78 1.62 1.02 1.86 1.14.24.12.38.1.52-.06.14-.15.6-.7.76-.94.16-.24.32-.2.54-.12.22.08 1.4.66 1.64.78.24.12.4.18.46.28.06.1.06.6-.19 1.3z"/></svg>
+    </a>
+
+    <script>
+      const header = document.getElementById("header");
+      const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 8);
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+
+      const toggle = document.getElementById("menuToggle");
+      const menu = document.getElementById("menu");
+      toggle.addEventListener("click", () => {
+        const open = menu.classList.toggle("open");
+        toggle.setAttribute("aria-expanded", open);
+      });
+      menu.querySelectorAll("a").forEach((a) =>
+        a.addEventListener("click", () => menu.classList.remove("open"))
+      );
+
+      // File input
+      const fileInput = document.getElementById("resume");
+      const fileName = document.getElementById("fileName");
+      const fileLabel = document.querySelector(".file-input-label");
+
+      fileInput?.addEventListener("change", (e) => {
+        if (e.target.files.length > 0) fileName.textContent = `📄 ${e.target.files[0].name}`;
+      });
+      fileLabel?.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        fileLabel.style.borderColor = "var(--accent)";
+        fileLabel.style.background = "rgba(139, 92, 246, 0.12)";
+      });
+      fileLabel?.addEventListener("dragleave", () => {
+        fileLabel.style.borderColor = "var(--border-strong)";
+        fileLabel.style.background = "rgba(139, 92, 246, 0.06)";
+      });
+      fileLabel?.addEventListener("drop", (e) => {
+        e.preventDefault();
+        fileLabel.style.borderColor = "var(--border-strong)";
+        fileLabel.style.background = "rgba(139, 92, 246, 0.06)";
+        if (e.dataTransfer.files.length > 0) {
+          fileInput.files = e.dataTransfer.files;
+          fileName.textContent = `📄 ${e.dataTransfer.files[0].name}`;
+        }
+      });
+
+      // Form submission (Formspree)
+      const form = document.getElementById("applicationForm");
+      const successMessage = document.getElementById("successMessage");
+      form?.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        fetch(form.action, {
+          method: "POST",
+          body: formData,
+          headers: { Accept: "application/json" },
+        })
+          .then((response) => {
+            if (response.ok) {
+              successMessage.classList.add("show");
+              form.reset();
+              fileName.textContent = "";
+              successMessage.scrollIntoView({ behavior: "smooth", block: "center" });
+              setTimeout(() => successMessage.classList.remove("show"), 6000);
+            }
+          })
+          .catch((error) => console.error("Erro ao enviar:", error));
+      });
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Trabalhe conosco - PlayDev",
+        "url": "https://www.playdev.com.br/careers.html",
+        "description": "Veja as vagas abertas na PlayDev e faça parte do nosso time de tecnologia.",
+        "inLanguage": "pt-BR"
+      }
+    </script>
+  </body>
+</html>

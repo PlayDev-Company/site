@@ -1,0 +1,7 @@
+# robots.txt — PlayDev
+# Permite todos os buscadores por padrão
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.playdev.com.br/sitemap.xml
